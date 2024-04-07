@@ -94,7 +94,7 @@ export default function Home() {
                 </p>
 
                 <p className="text-white text-md md:text-lg lg:text-xl md:text-left mb-10">
-                <span className="text-maize mt-10">•Non-Competitive</span> Our recreational 
+                <span className="text-maize mt-10">•Non-Competitive</span> Our non-competitive 
                 section serves as the perfect platform for skill development and team building and offers a relaxed and supportive environment where players can hone their abilities 
                 and gain confidence, preparing them for competitive play. 
                 </p>
