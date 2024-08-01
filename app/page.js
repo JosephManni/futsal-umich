@@ -43,7 +43,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="activities" class="p-8 bg-gradient-to-b from-maize to-darkblue -z-50">
+          <section id="activities" className="p-8 bg-gradient-to-b from-maize to-darkblue -z-50">
             <h2 className="text-xl md:text-2xl lg:text-3xl uppercase font-bold text-center text-darkblue mb-8">Club Activities</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
