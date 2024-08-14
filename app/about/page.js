@@ -9,8 +9,7 @@ export default function About() {
           <div className="flex flex-col">
             <h1 className="text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 md:text-left">About Us</h1>
             <p className="text-white text-sm md:text-md lg:text-lg md:text-left mt-10">
-              {"Our mission is simple yet ambitious: to provide a space where Michigan students can come together to play and enjoy the sport they love. We understand the challenges that many students face when it comes to pursuing futsal and soccer, from lack of available fields to unpredictable weather. That's why we're dedicated to addressing these obstacles and creating opportunities for everyone to participate."}
-              {"Beyond just playing the game, we value building connections and fostering camaraderie among our members. Our club is open to anyone across campus who shares our passion for team sports and wants to make meaningful connections with fellow Wolverines. Whether you're looking to improve your skills, stay active, or simply meet new friends, you'll find a supportive community here."}
+              {"Our mission is simple yet ambitious: to provide a space where Michigan students can come together to play and enjoy the sport they love. We understand the challenges that many students face when it comes to pursuing futsal and soccer, from lack of available fields to unpredictable weather. That's why we're dedicated to addressing these obstacles and creating opportunities for everyone to participate. Beyond just playing the game, we value building connections and fostering camaraderie among our members. Our club is open to anyone across campus who shares our passion for team sports and wants to make meaningful connections with fellow Wolverines. Whether you're looking to improve your skills, stay active, or simply meet new friends, you'll find a supportive community here."}
             </p>
           </div>
         </div>
