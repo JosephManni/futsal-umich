@@ -29,10 +29,10 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('https://q3f13mv0ag.execute-api.us-east-2.amazonaws.com/v1/contact', {
+    const response = await fetch('https://q3f13mv0ag.execute-api.us-east-2.amazonaws.com/v1/contact/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData)
     });
@@ -45,7 +45,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="join" className="p-8 bg-gradient-to-b from-maize to-darkblue flex flex-col md:flex-col items-center justify-center w-full h-full -z-50">
+    <section id="join" className="p-8 bg-gradient-to-b from-maize to-darkblue flex flex-col md:flex-col items-center justify-center w-full h-full">
       <div className="flex justify-center px-2 w-full mx-2 md:mx-10">
         <div className="flex flex-col">
           <h1 className="text-xl md:text-2xl lg:text-3xl text-darkblue font-bold uppercase mt-2 text-center p-8">Ready To Join The Fun?</h1>

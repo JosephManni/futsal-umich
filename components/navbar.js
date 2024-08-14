@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -61,11 +62,11 @@ export default function Navbar() {
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
-                                <a href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium" aria-current="page">Home</a>
-                                <a href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">About</a>
-                                <a href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Leadership</a>
-                                <a href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Contact</a>
-                                <a href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Social</a>
+                                <Link href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium" aria-current="page">Home</Link>
+                                <Link href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">About</Link>
+                                <Link href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Leadership</Link>
+                                <Link href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Contact</Link>
+                                <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Social</Link>
                             </div>
                         </div>
                     </div>
@@ -103,9 +104,9 @@ export default function Navbar() {
                             {/* Dropdown menu */}
                             {isProfileMenuOpen && (
                                 <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
-                                    <a href="/profile" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Your Profile</a>
-                                    <a href="/profile/settings" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Settings</a>
-                                    <a href="/api/auth/logout" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign out</a>
+                                    <Link href="/profile" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Your Profile</Link>
+                                    <Link href="/profile/settings" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Settings</Link>
+                                    <Link href="/api/auth/logout" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign out</Link>
                                 </div>
                             )}
                         </div>
@@ -116,11 +117,11 @@ export default function Navbar() {
             {/* Mobile menu */}
             <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} sm:hidden`} id="mobile-menu">
                 <div className="space-y-1 px-2 pb-3 pt-2">
-                    <a href="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
-                    <a href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</a>
-                    <a href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Leadership</a>
-                    <a href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
-                    <a href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Social</a>
+                    <Link href="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</Link>
+                    <Link href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</Link>
+                    <Link href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Leadership</Link>
+                    <Link href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</Link>
+                    <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Social</Link>
                 </div>
                 <div className="flex justify-center">
                 <img className="h-8 w-auto" src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>

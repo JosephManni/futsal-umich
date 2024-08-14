@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
     return (
         <footer className="bg-darkblue">
@@ -14,13 +16,13 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold uppercase text-white">Club</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2">
-                                <a href="/about" className="hover:underline">About</a>
+                                <Link href="/about" className="hover:underline">About</Link>
                             </li>
                             <li className="mb-2">
-                                <a href="/leadership" className="hover:underline">Leadership</a>
+                                <Link href="/leadership" className="hover:underline">Leadership</Link>
                             </li>
                             <li>
-                                <a href="/contact" className="hover:underline">Contact</a>
+                                <Link href="/contact" className="hover:underline">Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -29,10 +31,13 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold uppercase text-white">Players</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Portal Login</a>
+                                <Link href="/players/roster" className="hover:underline">Roster</Link>
+                            </li>
+                            <li className="mb-2">
+                                <Link href="/player/portal" className="hover:underline">Portal</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">Waivers</a>
+                                <Link href="/admin" className="hover:underline">Admin</Link>
                             </li>
                         </ul>
                     </div>
