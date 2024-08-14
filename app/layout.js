@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,6 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+        <UserProvider>
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -31,6 +33,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
       </body>
+      </UserProvider>
     </html>
   );
 }
