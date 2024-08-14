@@ -16,7 +16,7 @@ export default function Home() {
   }, []);
 
   return (
-      <main className="flex min-h-screen flex-col items-center justify-between -z-50">
+      <main className="flex min-h-screen flex-col items-center justify-between">
         <section id="home" className="relative w-full h-66 -z-50">
           <Image 
             src="/team-flick.jpg" 
@@ -27,7 +27,7 @@ export default function Home() {
           />
         </section>
 
-        <section id="content" className="h-full w-full -z-50">
+        <section id="content" className="h-full w-full">
           
           <section id="mission" className="p-8 bg-darkblue flex flex-row md:flex-row items-center justify-center w-full h-full -z-50">
             <div className="flex justify-center md:justify-start w-full md:w-1/2 mx-4 md:mx-10">
