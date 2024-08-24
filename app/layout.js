@@ -30,7 +30,9 @@ export default function RootLayout({ children }) {
 
         <Navbar></Navbar>
         </div>
+        <div className='mt-20'>
         {children}
+        </div>
         <Footer />
       </body>
       </UserProvider>

@@ -73,7 +73,7 @@ export default function ContactForm() {
   };
 
   if (submitted) {
-    return <p className="text-center text-xl text-darkblue font-bold">Thanks for your response! We'll be in touch soon!</p>;
+    return <p className="text-center text-xl text-darkblue font-bold">{"Thanks for your response! We'll be in touch soon!"}</p>;
   }
 
   return (
