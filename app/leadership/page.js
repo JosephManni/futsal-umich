@@ -44,8 +44,8 @@ const eboard = [
           '/logo.jpg',
     },
     {
-        name: 'Violet Potempski',
-        role: 'Social Media Manager / Recruitment',
+        name: 'Joseph Manni',
+        role: 'Webmaster',
         imageUrl:
           '/logo.jpg',
     },
