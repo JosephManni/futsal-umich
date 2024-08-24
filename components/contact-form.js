@@ -7,7 +7,7 @@ export default function ContactForm() {
     firstName: '',
     lastName: '',
     email: '',
-    interests: [],
+    interest: [],
     notes: ''
   });
 
@@ -68,15 +68,15 @@ export default function ContactForm() {
               <label className="block text-white font-bold mb-2">Interests</label>
               <div className="flex flex-col">
                 <label>
-                  <input type="checkbox" name="interests" value="learnMore" className="mr-2" checked={formData.interests.includes('learnMore')} onChange={handleChange} />
+                  <input type="checkbox" name="interests" value="learnMore" className="mr-2" checked={formData.interest.includes('learnMore')} onChange={handleChange} />
                   {"I'd like to know more about the club"}
                 </label>
                 <label>
-                  <input type="checkbox" name="interests" value="joinClub" className="mr-2" checked={formData.interests.includes('joinClub')} onChange={handleChange} />
+                  <input type="checkbox" name="interests" value="joinClub" className="mr-2" checked={formData.interest.includes('joinClub')} onChange={handleChange} />
                   {"I'm interested in joining"}
                 </label>
                 <label>
-                  <input type="checkbox" name="interests" value="sponsor" className="mr-2" checked={formData.interests.includes('sponsor')} onChange={handleChange} />
+                  <input type="checkbox" name="interests" value="sponsor" className="mr-2" checked={formData.interest.includes('sponsor')} onChange={handleChange} />
                   {"I'm interested in becoming a sponsor"}
                 </label>
               </div>
