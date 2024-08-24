@@ -4,5 +4,5 @@ import { withMiddlewareAuthRequired } from '@auth0/nextjs-auth0/edge';
 export default withMiddlewareAuthRequired();
 
 export const config = {
-  matcher: ['/portal/profile', '/admin/:path*'],
+  matcher: ['/portal/profile', '/admin', '/admin/:path*'],
 };
