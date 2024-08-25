@@ -7,6 +7,8 @@ const getManagementAPIToken = async () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
         },
         body: JSON.stringify({
             client_id: process.env.AUTH0_CLIENT_ID,
@@ -43,8 +45,7 @@ export const GET =  withApiAuthRequired(async (req) => {
         );
 
         const data = await response.json();
-         
-        return NextResponse.json({"name": data.name, "position" : data.user_metadata.position, "year": data.user_metadata.year, "division": data.app_metadata.division, "role": data.app_metadata.role, "approved": data.user_metadata.approved});        
+        return NextResponse.json({"name": data.name, "dob": data.user_metadata.dob, "umid": data.user_metadata.umid, "position" : data.user_metadata.position, "year": data.user_metadata.year, "waiver": data.user_metadata.waiver, "division": data.app_metadata.division, "role": data.app_metadata.role, "approved": data.app_metadata.approved});        
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: error.message }, { status: error.response?.status || 500 });
