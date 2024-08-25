@@ -113,7 +113,7 @@ export default function Home() {
                 </p>
                 <div className="text-right">
                   <Link href="/forms/eboard" className="inline-block">
-                    <button className="bg-maize text-darkblue px-4 py-2 rounded-md hover:bg-blue-600 mt-6">Apply</button>
+                    <button className="bg-maize text-darkblue px-4 py-2 rounded-md hover:bg-darkblue hover:text-maize mt-6">Apply</button>
                   </Link>
                 </div>
               </div>

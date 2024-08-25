@@ -6,7 +6,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 // Tabs component to handle tab switching
 const Tabs = ({ activeTab, setActiveTab }) => {
     return (
-        <div className="flex flex-col w-full md:w-1/4 p-4 bg-gray-100">
+        <div className="flex flex-col w-full md:w-1/4 p-4 bg-gray-100 pt-20">
             <button
                 className={`p-2 text-left ${activeTab === 'profile' ? 'bg-darkblue text-white' : 'text-darkblue'}`}
                 onClick={() => setActiveTab('profile')}
@@ -78,7 +78,7 @@ export default function PlayerPortal() {
     };
 
     return (
-        <main className="flex flex-col items-center justify-between mt-12">
+        <main className="flex flex-col items-center justify-between">
             <section id="content" className="h-full w-full p-4 md:p-20 flex flex-col md:flex-row">
                 <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
                 <div className="w-full md:w-3/4 p-4 md:p-8 bg-white flex flex-col items-center justify-center">

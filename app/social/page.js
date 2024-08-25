@@ -28,7 +28,7 @@ export default function Home() {
 
           <Link
             href="https://groupme.com/join_group/93404417/Axw5hOPS"
-            className="flex items-center space-x-3 p-4 w-full max-w-sm bg-white rounded-lg shadow-md hover:bg-blue-400 transition duration-300 ease-in-out"
+            className="flex items-center space-x-3 p-4 w-full max-w-sm bg-white rounded-lg shadow-md hover:bg-blue-300 transition duration-300 ease-in-out"
           >
             <SiGroupme size={30} className="text-blue-800" />
             <h1 className="font-semibold text-xl text-darkblue">Groupme</h1>

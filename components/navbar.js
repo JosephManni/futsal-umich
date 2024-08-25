@@ -63,7 +63,7 @@ export default function Navbar() {
                     <div className={`${isMobileMenuOpen ? 'hidden' : 'flex'} sm:flex-1 items-center justify-center sm:items-stretch sm:justify-start`}>
                         <div className="flex flex-shrink-0 items-center">
                         <a href="/" className="hidden sm:block">
-                            <Image className="h-12 w-auto mx-auto" width={12} height={12} src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
+                            <Image className="h-12 w-auto mx-auto" width={32} height={32} src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
                         </a>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
@@ -102,7 +102,7 @@ export default function Navbar() {
                                     {user ? (
                                         <Image
                                             className="h-8 w-8 rounded-full" 
-                                            width={8} height={8}
+                                            width={32} height={32}
                                             src={user.picture} 
                                             alt="Profile Picture"
                                         />
@@ -115,9 +115,9 @@ export default function Navbar() {
                             {/* Dropdown menu */}
                             {isProfileMenuOpen && (
                                 <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
-                                    <Link href="/players/portal" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">{user ? "My" : "Your"} Profile</Link>
+                                    <Link onClick={() => setIsProfileMenuOpen(false)} href="/players/portal" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">{user ? "My" : "Your"} Profile</Link>
                                     {/* <Link href="/profile/settings" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Settings</Link> */}
-                                    <Link href={`/api/auth/${user ? "logout" : "login"}`} className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign {user ? "out" : "in"}</Link>
+                                    <Link onClick={() => setIsProfileMenuOpen(false)} href={`/api/auth/${user ? "logout" : "login"}`} className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign {user ? "out" : "in"}</Link>
                                 </div>
                             )}
                         </div>
@@ -128,14 +128,14 @@ export default function Navbar() {
             {/* Mobile menu */}
             <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} sm:hidden`} id="mobile-menu">
                 <div className="space-y-1 px-2 pb-3 pt-2">
-                    <Link href="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</Link>
-                    <Link href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</Link>
-                    <Link href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Leadership</Link>
-                    <Link href="/forms/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</Link>
-                    <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Socials</Link>
+                    <Link onClick={() => setIsMobileMenuOpen(false)} href="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</Link>
+                    <Link onClick={() => setIsMobileMenuOpen(false)} href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</Link>
+                    <Link onClick={() => setIsMobileMenuOpen(false)} href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Leadership</Link>
+                    <Link onClick={() => setIsMobileMenuOpen(false)} href="/forms/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</Link>
+                    <Link onClick={() => setIsMobileMenuOpen(false)} href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Socials</Link>
                 </div>
                 <div className="flex justify-center">
-                <Image className="h-8 w-auto" src="/logo.jpg" width={8} height={8} alt="Club Futsal at the University of Michigan"/>
+                <Image className="h-8 w-auto" src="/logo.jpg" width={32} height={32} alt="Club Futsal at the University of Michigan"/>
                 </div>
             </div>
         </nav>
