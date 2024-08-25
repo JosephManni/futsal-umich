@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ContactForm from "@/components/contact-form";
+import Link from "next/link";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -51,7 +52,7 @@ export default function Home() {
               <img src="/court.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" style={{ filter: 'invert(100%)' }} />
               <h3 className="text-maize text-xl font-semibold mb-2">Scrimmages</h3>
               <p className="text-white mb-4">Join us for friendly scrimmages to improve your skills and connect with fellow club members.</p>
-              <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a>
+              {/* <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a> */}
             </div>
 
 
@@ -59,14 +60,14 @@ export default function Home() {
               <img src="/bracket.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" style={{ filter: 'invert(100%)' }} />
               <h3 className="text-maize text-xl font-semibold mb-2">Tournaments</h3>
               <p className="text-white mb-4">Test your skills, teamwork, and sportsmanship in competitive tournaments around the midwest.</p>
-              <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a>
+              {/* <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a> */}
             </div>
 
             <div className="bg-darkblue shadow-md rounded-lg p-6 pb-10">
               <img src="/people.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" style={{ filter: 'invert(100%)' }} />
               <h3 className="text-maize text-xl font-semibold mb-2">Social Events</h3>
               <p className="text-white mb-4">Connect with other club members and student organizations off the court through various social events.</p>
-              <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a>
+              {/* <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a> */}
             </div>
 
             </div>
@@ -111,9 +112,9 @@ export default function Home() {
                 Our team works tirelessly to organize events, coordinate activities, and ensure that every member has the opportunity to thrive both on and off the court.
                 </p>
                 <div className="text-right">
-                  <a href="#" className="inline-block">
+                  <Link href="/forms/eboard" className="inline-block">
                     <button className="bg-maize text-darkblue px-4 py-2 rounded-md hover:bg-blue-600 mt-6">Apply</button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
