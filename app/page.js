@@ -49,7 +49,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
             <div className="bg-darkblue shadow-md rounded-lg p-6">
-              <img src="/court.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" style={{ filter: 'invert(100%)' }} />
+              <Image src="/court.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" width={20} height={20} style={{ filter: 'invert(100%)' }} />
               <h3 className="text-maize text-xl font-semibold mb-2">Scrimmages</h3>
               <p className="text-white mb-4">Join us for friendly scrimmages to improve your skills and connect with fellow club members.</p>
               {/* <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a> */}
@@ -57,14 +57,14 @@ export default function Home() {
 
 
             <div className="bg-darkblue shadow-md rounded-lg p-6">
-              <img src="/bracket.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" style={{ filter: 'invert(100%)' }} />
+              <Image src="/bracket.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" width={20} height={20} style={{ filter: 'invert(100%)' }} />
               <h3 className="text-maize text-xl font-semibold mb-2">Tournaments</h3>
               <p className="text-white mb-4">Test your skills, teamwork, and sportsmanship in competitive tournaments around the midwest.</p>
               {/* <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a> */}
             </div>
 
             <div className="bg-darkblue shadow-md rounded-lg p-6 pb-10">
-              <img src="/people.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" style={{ filter: 'invert(100%)' }} />
+              <Image src="/people.svg" alt="Activity 1" className="w-20 h-20 object-cover mb-4 mx-auto rounded-lg" width={20} height={20} style={{ filter: 'invert(100%)' }} />
               <h3 className="text-maize text-xl font-semibold mb-2">Social Events</h3>
               <p className="text-white mb-4">Connect with other club members and student organizations off the court through various social events.</p>
               {/* <a href="#" className="block text-center bg-maize text-darkblue px-4 py-2 rounded-lg">Learn More</a> */}

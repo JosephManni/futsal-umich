@@ -4,6 +4,7 @@ import Link from "next/link";
 import Announcement from "@/components/announcement";
 import { CgProfile } from "react-icons/cg";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function Navbar() {
                     <div className={`${isMobileMenuOpen ? 'hidden' : 'flex'} sm:flex-1 items-center justify-center sm:items-stretch sm:justify-start`}>
                         <div className="flex flex-shrink-0 items-center">
                         <a href="/" className="hidden sm:block">
-                            <img className="h-12 w-auto mx-auto" src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
+                            <Image className="h-12 w-auto mx-auto" width={12} height={12} src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
                         </a>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
@@ -99,8 +100,9 @@ export default function Navbar() {
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
                                     {user ? (
-                                        <img 
+                                        <Image
                                             className="h-8 w-8 rounded-full" 
+                                            width={8} height={8}
                                             src={user.picture} 
                                             alt="Profile Picture"
                                         />
@@ -133,7 +135,7 @@ export default function Navbar() {
                     <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Socials</Link>
                 </div>
                 <div className="flex justify-center">
-                <img className="h-8 w-auto" src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
+                <Image className="h-8 w-auto" src="/logo.jpg" width={8} height={8} alt="Club Futsal at the University of Michigan"/>
                 </div>
             </div>
         </nav>
