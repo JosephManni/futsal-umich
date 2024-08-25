@@ -2,11 +2,14 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Announcement from "@/components/announcement";
+import { CgProfile } from "react-icons/cg";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
     const profileMenuRef = useRef(null);
+    const { user } = useUser();
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -67,8 +70,8 @@ export default function Navbar() {
                                 <Link href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium" aria-current="page">Home</Link>
                                 <Link href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">About</Link>
                                 <Link href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Leadership</Link>
-                                <Link href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Contact</Link>
-                                <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Social</Link>
+                                <Link href="/forms/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Contact</Link>
+                                <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Socials</Link>
                             </div>
                         </div>
                     </div>
@@ -95,20 +98,24 @@ export default function Navbar() {
                                 >
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
-                                    <img 
-                                        className="h-8 w-8 rounded-full" 
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" 
-                                        alt=""
-                                    />
+                                    {user ? (
+                                        <img 
+                                            className="h-8 w-8 rounded-full" 
+                                            src={user.picture} 
+                                            alt="Profile Picture"
+                                        />
+                                    ) : (
+                                        <CgProfile className="h-8 w-8 rounded-full bg-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"/>
+                                    )}
                                 </button>
                             </div>
 
                             {/* Dropdown menu */}
                             {isProfileMenuOpen && (
                                 <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
-                                    <Link href="/profile" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Your Profile</Link>
-                                    <Link href="/profile/settings" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Settings</Link>
-                                    <Link href="/api/auth/logout" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign out</Link>
+                                    <Link href="/players/portal" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">{user ? "My" : "Your"} Profile</Link>
+                                    {/* <Link href="/profile/settings" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Settings</Link> */}
+                                    <Link href={`/api/auth/${user ? "logout" : "login"}`} className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign {user ? "out" : "in"}</Link>
                                 </div>
                             )}
                         </div>
@@ -122,8 +129,8 @@ export default function Navbar() {
                     <Link href="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</Link>
                     <Link href="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</Link>
                     <Link href="/leadership" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Leadership</Link>
-                    <Link href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</Link>
-                    <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Social</Link>
+                    <Link href="/forms/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</Link>
+                    <Link href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Socials</Link>
                 </div>
                 <div className="flex justify-center">
                 <img className="h-8 w-auto" src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
