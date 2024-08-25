@@ -80,24 +80,21 @@ export default function Home() {
               Special Teams. <br/> Special Plays. <br/> Special Players. ☝️
               </h1>
               <h1 className="hidden md:block text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 md:text-left p-8 mx-auto">
-                Special Teams &nbsp;•&nbsp; Special Plays &nbsp;•&nbsp; Special Players ☝️
+                Special Teams &nbsp;•&nbsp; Special Plays &nbsp;•&nbsp; Special Players
               </h1>
 
 
 
                 <p className="text-white text-lg md:text-xl lg:text-2xl md:text-left bold">
-                We offer both competitive and recreational sections to cater to a diverse range of interests and skill levels. 
+                We offer both competitive and non-competitive sections to cater to a diverse range of interests and skill levels. 
                 </p>
 
                 <p className="text-white text-md md:text-lg lg:text-xl md:text-left mt-10 mb-10">
-                <span className="text-maize mt-10">•Competitive</span> For those seeking a more intense challenge and 
-                the thrill of competition, our competitive section provides opportunities to test your skills against others in various tournaments and matches. 
+                For those seeking a more intense challenge and the thrill of competition, our <span className="text-maize mt-10">competitive section</span> provides opportunities to test your skills against other players in various tournaments and matches. 
                 </p>
 
                 <p className="text-white text-md md:text-lg lg:text-xl md:text-left mb-10">
-                <span className="text-maize mt-10">•Non-Competitive</span> Our non-competitive 
-                section serves as the perfect platform for skill development and team building and offers a relaxed and supportive environment where players can hone their abilities 
-                and gain confidence, preparing them for competitive play. 
+                For those seeking a platform for skill development and team building, our <span className="text-maize mt-10">non-competitive</span> offers a relaxed and supportive environment where players can hone their abilities and gain confidence, preparing them for competitive play. 
                 </p>
               </div>
             </div>
