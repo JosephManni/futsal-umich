@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">
                     <a href="#" className="flex items-center">
-                        <Image src="/logo.jpg" className="h-12 w-auto me-3" width={12} height={12} alt="Logo" />
+                        <Image src="/logo.jpg" className="h-12 w-auto me-3" width={32} height={32} alt="Logo" />
                         <span className="self-center text-xs md:text-xl font-semibold whitespace-nowrap text-white pr-6">The Futsal Club at the University of Michigan</span>
                     </a>
                 </div>
