@@ -51,15 +51,15 @@ export default function Footer() {
                 <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 The Futsal Club at the University of Michigan. All Rights Reserved.
                 </span>
                 <div className="flex mt-4 sm:justify-center sm:mt-0">
-                    <a href="https://www.facebook.com/profile.php?id=61558429673788&mibextid=LQQJ4d" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                    <a href="https://www.facebook.com/profile.php?id=61558429673788&mibextid=LQQJ4d" target="_blank" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         <CiFacebook className="w-6 h-6" />
                         <span className="sr-only">Facebook page</span>
                     </a>
-                    <a href="https://www.instagram.com/umichfutsal" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                    <a href="https://www.instagram.com/umichfutsal" target="_blank" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                         <CiInstagram className="w-6 h-6" />
                         <span className="sr-only">Instagram page</span>
                     </a>
-                    <a href="https://groupme.com/join_group/93404417/Axw5hOPS" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                    <a href="https://groupme.com/join_group/93404417/Axw5hOPS" target="_blank" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                         <SiGroupme className="w-6 h-6" />
                         <span className="sr-only">Groupme</span>
                     </a>
