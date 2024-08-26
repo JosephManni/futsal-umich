@@ -86,7 +86,7 @@ export default function Home() {
 
 
                 <p className="text-white text-lg md:text-xl lg:text-2xl md:text-left bold">
-                We offer both competitive and non-competitive sections to cater to a diverse range of interests and skill levels. 
+                We offer both competitive and recreational sections to cater to a diverse range of interests and skill levels. 
                 </p>
 
                 <p className="text-white text-md md:text-lg lg:text-xl md:text-left mt-10 mb-10">
@@ -94,7 +94,7 @@ export default function Home() {
                 </p>
 
                 <p className="text-white text-md md:text-lg lg:text-xl md:text-left mb-10">
-                For those seeking a platform for skill development and team building, our <span className="text-maize mt-10">non-competitive</span> offers a relaxed and supportive environment where players can hone their abilities and gain confidence, preparing them for competitive play. 
+                For those seeking a platform for skill development and team building, our <span className="text-maize mt-10">recreational section</span> offers a relaxed and supportive environment where players can hone their abilities and gain confidence, preparing them for competitive play. 
                 </p>
               </div>
             </div>

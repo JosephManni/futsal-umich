@@ -8,7 +8,8 @@ export default function EboardForm() {
     lastName: '',
     email: '',
     interest: ['eboard'],
-    notes: ''
+    notes: '',
+    type: 'eboard'
   });
 
   const [errors, setErrors] = useState({});

@@ -8,7 +8,8 @@ export default function ContactForm() {
     lastName: '',
     email: '',
     interest: [],
-    notes: ''
+    notes: '',
+    type: 'contact'
   });
 
   const [errors, setErrors] = useState({});

@@ -10,7 +10,7 @@ const nextConfig = {
           headers: [
             {
               key: "Access-Control-Allow-Origin",
-              value: "*", // Set your origin
+              value: process.env.NEXT_PUBLIC_ALLOWED_ORIGIN, // Set your origin
             },
             {
               key: "Access-Control-Allow-Methods",

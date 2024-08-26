@@ -121,6 +121,7 @@ export default function Home() {
                                         >
                                             <option value="REC">REC</option>
                                             <option value="COMP">COMP</option>
+                                            <option value="PENDING">PENDING</option>
                                         </select>
                                     </td>
                                     <td className="p-4">
