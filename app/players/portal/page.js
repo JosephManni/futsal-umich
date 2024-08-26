@@ -2,6 +2,7 @@
 
 import { act, useEffect, useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { SiCheckmarx } from 'react-icons/si';
 
 // Tabs component to handle tab switching
 const Tabs = ({ activeTab, setActiveTab }) => {
@@ -77,6 +78,10 @@ export default function PlayerPortal() {
         handleUpdateUser('waiver', true);
     };
 
+    const handleSignup = () => {
+        handleUpdateUser('signup_done', true);
+    };
+
     return (
         <main className="flex flex-col items-center justify-between">
             <section id="content" className="h-full w-full p-4 md:p-20 flex flex-col md:flex-row">
@@ -142,6 +147,7 @@ export default function PlayerPortal() {
                             {userInfo.waiver ? (
                                 <div className="flex flex-col items-center">
                                     <p className="mb-4 text-green-500">Your response has been recorded. Thank you!</p>
+                                    <SiCheckmarx className="text-6xl text-green-500" />
                                 </div>
                             ) : (
                                 <div className="flex flex-col items-center">
@@ -178,11 +184,96 @@ export default function PlayerPortal() {
                     )}
 
                     {activeTab === 'tryouts' && (
-                        <div className="w-full">
-                            <h2 className="text-sm font-semibold mb-4 text-darkblue">Session information will be available shortly.</h2>
-                            <button className="bg-maize text-darkblue px-4 py-2 rounded-md cursor-not-allowed" disabled>Sign Up</button>
-                        </div>
+                    <div className="w-full">
+                        {!process.env.NEXT_PUBLIC_TRYOUTS_LIVE ? (
+                        <>
+                            <h2 className="text-sm font-semibold mb-4 text-darkblue">
+                            Session information will be available shortly.
+                            </h2>
+                            <button className="bg-maize text-darkblue px-4 py-2 rounded-md cursor-not-allowed" disabled>
+                            Sign Up
+                            </button>
+                        </>
+                        ) : (
+                        <>
+                            <div className="flex flex-col items-left">
+                                    {!userInfo.waiver && 
+                                        <div className='flex flex-col items-center'>
+                                            <p className="mb-4 text-red-500">You must sign the participation waiver before participating in club-related activities.</p>
+                                        </div>
+                                    }
+                                    {userInfo.signup_done &&
+                                        <div className="">
+                                            <p className="mb-4 text-green-500 items-center flex flex-col">Your response has been recorded. Thank you!</p>
+                                            <div className="flex flex-col items-start">
+                                                <h1 className="mb-4 text-darkblue font-semibold">Submission details</h1>
+                                                <p className="text-darkblue text-md">
+                                                    <span className="font-bold">Preferred Style: </span>
+                                                    {userInfo.preferred_style}
+                                                </p>
+                                                <p className="text-darkblue text-md mt-2">
+                                                    <span className="font-bold">Preferred Session: </span>
+                                                    {userInfo.preferred_date}
+                                                </p>
+                                                <p className="text-darkblue text-md mt-2">
+                                                    <span className="font-bold">Assigned Session: </span>
+                                                    {userInfo.assigned_date}
+                                                </p>
+                                                </div>
+                                        </div>
+                                    }
+                                    {userInfo.waiver && !userInfo.signup_done &&
+                                    <div>
+                                    <p className='text-darkblue text-md'>{"Tryouts will include a first round & final cut. Tryouts will be held at Hubbard or Mitchell with final cuts being held at the Coliseum."}</p>
+                                    
+                                    <ul className='text-darkblue text-md mt-6'>
+                                        <li>There are two options for the first round <span className='font-bold'>(you may only attend one):</span></li>
+                                        <li>{"Option A) Monday Sept 2 (7 - 9PM)"}</li>
+                                        <li>{"Option B) Wednesday Sept 4 (7 - 9PM)"}</li>
+                                    </ul>
+                                    <p className='text-darkblue text-md mt-6'>Tryouts are <span className='italic'>free</span> and everyone who registers will be given a chance to tryout</p>
+                                    <p className='text-darkblue text-md mt-2'>However, your preference <span className='italic font-semibold'>does not guarantee</span> you that time slot (first come first serve)</p>
+                                    <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work it through"}</p>                                                                  
+                                    <p className='text-darkblue text-md mt-2'>{"When you register for tryouts, you will be entered into a raffle for a free pair of Adidas Sambas!"}</p>
+
+                                    <div className="mb-4 mt-6">
+                                        <label className="block font-bold mb-2 text-darkblue">Preferred Style</label>
+                                        <select
+                                            className="w-full p-2 border border-gray-300 rounded-md text-black"
+                                            value={userInfo.preferred_style}
+                                            onChange={(e) => handleUpdateUser('preferred_style', e.target.value)}
+                                        >
+                                            <option value="Competitive">Competitive</option>
+                                            <option value="Recreational">Recreational</option>
+                                        </select>
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block font-bold mb-2 text-darkblue">Preferred Session</label>
+                                        <select
+                                            className="w-full p-2 border border-gray-300 rounded-md text-black"
+                                            value={userInfo.preferred_date}
+                                            onChange={(e) => handleUpdateUser('preferred_date', e.target.value)}
+                                        >
+                                            <option value="Monday, Sept. 2: 7-9pm @ Hubbard">Monday, Sept. 2: 7-9pm @ Hubbard</option>
+                                            <option value="Wednesday, Sept. 4: 7-9pm @ Mitchell">Wednesday, Sept. 4: 7-9pm @ Mitchell</option>
+                                        </select>
+                                    </div>
+
+                                    <button
+                                        className={`bg-maize text-darkblue px-4 py-2 rounded-md mt-4`}
+                                        onClick={handleSignup}
+                                        
+                                    >
+                                        Sign Me Up!
+                                    </button>
+                                    </div>
+                                    }
+                                </div>
+                        </>
+                        )}
+                    </div>
                     )}
+
                 </div>
             </section>
         </main>

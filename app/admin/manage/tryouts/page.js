@@ -7,13 +7,13 @@ export default function Home() {
     const [roster, setRoster] = useState([]);
     const [currentUserRole, setCurrentUserRole] = useState('');
 
-    // Fetch the roster and the current user's role
     useEffect(() => {
         const fetchRoster = async () => {
             try {
                 const response = await fetch('/api/admin/roster');
                 const data = await response.json();
-                setRoster(data);
+                const filteredRoster = data.filter(person => person.signup_done === true);
+                setRoster(filteredRoster);
             } catch (error) {
                 console.error('Failed to fetch roster:', error);
             }
@@ -23,7 +23,6 @@ export default function Home() {
             try {
                 const response = await fetch('/api/user'); // assuming an endpoint to fetch the current user's data
                 const data = await response.json();
-
                 setCurrentUserRole(data.role || '');
             } catch (error) {
                 console.error('Failed to fetch user role:', error);
@@ -34,7 +33,6 @@ export default function Home() {
         fetchUserRole();
     }, []);
 
-    // Function to handle updates to the player
     const handleUpdatePlayer = async (userId, field, value) => {
         try {
             const body = field === 'approved' ? { [field]: value === 'Approved' } : { [field]: value };
@@ -61,12 +59,26 @@ export default function Home() {
         }
     };
 
+    // Calculate counts for each section
+    const getCountByDate = (date) => {
+        return roster.filter(player => player.assigned_date === date).length;
+    };
+
+    const waitingCount = getCountByDate('Waiting for assignment.');
+    const mondayCount = getCountByDate('Monday, Sept. 2: 7-9pm @ Hubbard');
+    const wednesdayCount = getCountByDate('Wednesday, Sept. 4: 7-9pm @ Mitchell');
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between mt-12">
             <section id="content" className="h-full w-full p-20">
                 <section id="manage-roster" className="p-8 bg-darkblue flex flex-col items-center justify-center w-full h-full -z-50">
                     <div className="w-full mt-8 mb-8">
-                        <h1 className="text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 text-center sm:text-left">Roster</h1>
+                        <h1 className="text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 text-center sm:text-left">Tryout Signups</h1>
+                        <div className="text-right mb-4">
+                            <p className='text-white text-lg'>Waiting for assignment: <span className='text-maize'>{waitingCount}</span></p>
+                            <p className='text-white text-lg'>Monday, Sept. 2: 7-9pm @ Hubbard: <span className='text-maize'>{mondayCount}</span></p>
+                            <p className='text-white text-lg'>Wednesday, Sept. 4: 7-9pm @ Mitchell: <span className='text-maize'>{wednesdayCount}</span></p>
+                        </div>
                     </div>
                     <table className="w-full bg-white p-8 text-darkblue rounded-lg">
                         <thead className="font-bold text-xl text-left p-4">
@@ -74,9 +86,9 @@ export default function Home() {
                                 <th className="p-4">Player</th>
                                 <th className="p-4">Position</th>
                                 <th className="p-4">Year</th>
-                                <th className="p-4">Division</th>
-                                <th className="p-4">Role</th>
-                                <th className="p-4">Status</th>
+                                <th className="p-4">Preferred Style</th>
+                                <th className="p-4">Preferred Tryout Date</th>
+                                <th className="p-4">Assigned Tryout Date</th>
                             </tr>
                         </thead>
                         <tbody className="font-semibold text-md p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
@@ -116,34 +128,30 @@ export default function Home() {
                                     </td>
                                     <td className="p-4">
                                         <select
-                                            value={player.division}
-                                            onChange={(e) => handleUpdatePlayer(player.user_id, 'division', e.target.value)}
+                                            value={player.preferred_style}
+                                            onChange={(e) => handleUpdatePlayer(player.user_id, 'preferred_style', e.target.value)}
                                         >
-                                            <option value="REC">REC</option>
-                                            <option value="COMP">COMP</option>
+                                            <option value="Recreation">Recreational</option>
+                                            <option value="Competitive">Competitive</option>
                                         </select>
                                     </td>
                                     <td className="p-4">
-                                        {currentUserRole === 'webmaster' ? (
-                                            <select
-                                                value={player.role}
-                                                onChange={(e) => handleUpdatePlayer(player.user_id, 'role', e.target.value)}
-                                            >
-                                                <option value="webmaster">Webmaster</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="player">Player</option>
-                                            </select>
-                                        ) : (
-                                            player.role
-                                        )}
+                                        <select
+                                            value={player.preferred_date}
+                                            onChange={(e) => handleUpdatePlayer(player.user_id, 'preferred_date', e.target.value)}
+                                        >
+                                            <option value="Monday, Sept. 2: 7-9pm @ Hubbard">Monday, Sept. 2: 7-9pm @ Hubbard</option>
+                                            <option value="Wednesday, Sept. 4: 7-9pm @ Mitchell">Wednesday, Sept. 4: 7-9pm @ Mitchell</option>
+                                        </select>
                                     </td>
                                     <td className="p-4">
                                         <select
-                                            value={player.approved}
-                                            onChange={(e) => handleUpdatePlayer(player.user_id, 'approved', e.target.value)}
+                                            value={player.assigned_date}
+                                            onChange={(e) => handleUpdatePlayer(player.user_id, 'assigned_date', e.target.value)}
                                         >
-                                            <option value="Approved">Approved</option>
-                                            <option value="Waiting Approval">Waiting Approval</option>
+                                            <option value="Waiting for assignment.">Waiting for assignment.</option>
+                                            <option value="Monday, Sept. 2: 7-9pm @ Hubbard">Monday, Sept. 2: 7-9pm @ Hubbard</option>
+                                            <option value="Wednesday, Sept. 4: 7-9pm @ Mitchell">Wednesday, Sept. 4: 7-9pm @ Mitchell</option>
                                         </select>
                                     </td>
                                 </tr>

@@ -24,10 +24,14 @@ const createRequestBody = (body) => {
     const requestBody = {};
 
     // Only add user_metadata if it contains non-null values
-    if (body.position || body.year) {
+    if (body.position || body.year || body.waiver !== undefined || body.preferred_style || body.preferred_date || body.signup_done !== undefined || body.assigned_date) {
         requestBody.user_metadata = {};
         if (body.position) requestBody.user_metadata.position = body.position;
         if (body.year) requestBody.user_metadata.year = body.year;
+        if (body.preferred_style) requestBody.user_metadata.preferred_style = body.preferred_style;
+        if (body.preferred_date) requestBody.user_metadata.preferred_date = body.preferred_date;
+        if (body.signup_done !== undefined) requestBody.user_metadata.signup_done = body.signup_done;
+        if (body.assigned_date) requestBody.user_metadata.assigned_date = body.assigned_date;
     }
 
     // Only add app_metadata if it contains non-null values

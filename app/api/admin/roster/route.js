@@ -81,8 +81,12 @@ export const GET = withApiAuthRequired(async (req) => {
             year: user.user_metadata?.year,
             division: user.app_metadata?.division,
             role: user.app_metadata?.role,
-            approved: user.app_metadata?.approved ? "Approved" : "Waiting Approval"
-        }));
+            approved: user.app_metadata?.approved ? "Approved" : "Waiting Approval",
+            waiver: user.user_metadata?.waiver,
+            preferred_style: user.user_metadata?.preferred_style,
+            preferred_date: user.user_metadata?.preferred_date,
+            assigned_date: user.user_metadata?.assigned_date,
+            signup_done: user.user_metadata?.signup_done}));
 
         return NextResponse.json(result);
     } catch (error) {

@@ -76,7 +76,7 @@ export default function Home() {
                                 <th className="p-4">Year</th>
                                 <th className="p-4">Division</th>
                                 <th className="p-4">Role</th>
-                                <th className="p-4">Status</th>
+                                <th className="p-4">Roster Status</th>
                             </tr>
                         </thead>
                         <tbody className="font-semibold text-md p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
