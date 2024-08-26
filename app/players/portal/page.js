@@ -35,7 +35,7 @@ export default function PlayerPortal() {
     const [activeTab, setActiveTab] = useState('profile');
     const [userInfo, setUserInfo] = useState(null);
     const [signedName, setSignedName] = useState("");
-    const { user } = useUser();
+    const { user, error, isLoading } = useUser();
 
     useEffect(() => {
         // Fetch user information from the /api/user endpoint
@@ -93,6 +93,8 @@ export default function PlayerPortal() {
         handleUpdateUser('preferred_date', updatedUserInfo.preferred_date);
     };
 
+    if (isLoading) return <div className='text-maize'>Loading...</div>;
+    if (error) return <div className='text-maize'>{error.message}</div>;
     return (
         <main className="flex flex-col items-center justify-between">
             <section id="content" className="h-full w-full p-4 md:p-20 flex flex-col md:flex-row">
