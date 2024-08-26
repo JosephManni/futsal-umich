@@ -45,7 +45,7 @@ export const GET =  withApiAuthRequired(async (req) => {
         );
 
         const data = await response.json();
-        return NextResponse.json({"name": data.name, "dob": data.user_metadata.dob, "umid": data.user_metadata.umid, "position" : data.user_metadata.position, "year": data.user_metadata.year, "waiver": data.user_metadata.waiver, "preferred_style": data.user_metadata.preferred_style, "preferred_date": data.user_metadata.preferred_date, "assigned_date": data.user_metadata.assigned_date, "signup_done": data.user_metadata.signup_done, "division": data.app_metadata.division, "role": data.app_metadata.role, "approved": data.app_metadata.approved});        
+        return NextResponse.json({"name": data.name, "dob": data.user_metadata.dob, "umid": data.user_metadata.umid, "position" : data.user_metadata.position, "year": data.user_metadata.year, "waiver": data.user_metadata.waiver, "preferred_style": data.user_metadata.preferred_style, "preferred_date": data.user_metadata.preferred_date, "assigned_date": data.user_metadata.assigned_date, "signup_done": data.user_metadata.signup_done, "signup_time": data.user_metadata.signup_time, "division": data.app_metadata.division, "role": data.app_metadata.role, "approved": data.app_metadata.approved});        
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: error.message }, { status: error.response?.status || 500 });

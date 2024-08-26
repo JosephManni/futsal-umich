@@ -86,7 +86,10 @@ export const GET = withApiAuthRequired(async (req) => {
             preferred_style: user.user_metadata?.preferred_style,
             preferred_date: user.user_metadata?.preferred_date,
             assigned_date: user.user_metadata?.assigned_date,
-            signup_done: user.user_metadata?.signup_done}));
+            signup_done: user.user_metadata?.signup_done,
+            signup_time: user.user_metadata?.signup_time
+        }));
+
 
         return NextResponse.json(result);
     } catch (error) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { act, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { SiCheckmarx } from 'react-icons/si';
 
@@ -44,7 +44,6 @@ export default function PlayerPortal() {
                 const response = await fetch('/api/user');
                 const data = await response.json();
                 setUserInfo(data);
-                // setWaiverSigned(data.waiver);
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
             }
@@ -73,13 +72,25 @@ export default function PlayerPortal() {
             console.error('Failed to update user:', error);
         }
     };    
-
+    
     const handleSignWaiver = () => {
         handleUpdateUser('waiver', true);
     };
 
     const handleSignup = () => {
+        const now = new Date();
+        
+        // Ensure userInfo has default values for preferred_style and preferred_date
+        const updatedUserInfo = {
+            ...userInfo,
+            preferred_style: userInfo.preferred_style || "Competitive",
+            preferred_date: userInfo.preferred_date || "Monday, Sept. 2: 7-9pm @ Hubbard",
+        };
+
         handleUpdateUser('signup_done', true);
+        handleUpdateUser('signup_time', now.toLocaleString());
+        handleUpdateUser('preferred_style', updatedUserInfo.preferred_style);
+        handleUpdateUser('preferred_date', updatedUserInfo.preferred_date);
     };
 
     return (
@@ -91,7 +102,6 @@ export default function PlayerPortal() {
 
                     {activeTab === 'profile' && userInfo && (
                         <div className="w-full">
-                            {/* <h2 className="text-lg font-semibold mb-4 text-maize">My Information</h2> */}
                             <div className="mb-4">
                                 <label className="block font-bold mb-2 text-darkblue">Name</label>
                                 <input type="text" className="w-full p-2 border border-gray-300 rounded-md text-black" value={userInfo.name} disabled />
@@ -143,7 +153,6 @@ export default function PlayerPortal() {
 
                     {activeTab === 'waivers' && (
                         <div className="w-full">
-                            {/* <h2 className="text-lg font-semibold mb-4">My Waivers</h2> */}
                             {userInfo.waiver ? (
                                 <div className="flex flex-col items-center">
                                     <p className="mb-4 text-green-500">Your response has been recorded. Thank you!</p>
@@ -205,7 +214,11 @@ export default function PlayerPortal() {
                                     {userInfo.signup_done &&
                                         <div className="">
                                             <p className="mb-4 text-green-500 items-center flex flex-col">Your response has been recorded. Thank you!</p>
-                                            <div className="flex flex-col items-start">
+                                            <p className='text-darkblue text-md'>{"Tryouts will include a first round & final cut. Tryouts will be held at Hubbard or Mitchell with final cuts being held at the Coliseum."}</p>
+                                    
+                                        <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work it through"}</p>                                                                  
+                                    
+                                         <div className="flex flex-col items-start mt-6">
                                                 <h1 className="mb-4 text-darkblue font-semibold">Submission details</h1>
                                                 <p className="text-darkblue text-md">
                                                     <span className="font-bold">Preferred Style: </span>
@@ -240,7 +253,7 @@ export default function PlayerPortal() {
                                         <label className="block font-bold mb-2 text-darkblue">Preferred Style</label>
                                         <select
                                             className="w-full p-2 border border-gray-300 rounded-md text-black"
-                                            value={userInfo.preferred_style}
+                                            value={userInfo.preferred_style || "Competitive"}
                                             onChange={(e) => handleUpdateUser('preferred_style', e.target.value)}
                                         >
                                             <option value="Competitive">Competitive</option>
@@ -251,18 +264,17 @@ export default function PlayerPortal() {
                                         <label className="block font-bold mb-2 text-darkblue">Preferred Session</label>
                                         <select
                                             className="w-full p-2 border border-gray-300 rounded-md text-black"
-                                            value={userInfo.preferred_date}
+                                            value={userInfo.preferred_date || "Monday, Sept. 2: 7-9pm @ Hubbard"}
                                             onChange={(e) => handleUpdateUser('preferred_date', e.target.value)}
                                         >
                                             <option value="Monday, Sept. 2: 7-9pm @ Hubbard">Monday, Sept. 2: 7-9pm @ Hubbard</option>
                                             <option value="Wednesday, Sept. 4: 7-9pm @ Mitchell">Wednesday, Sept. 4: 7-9pm @ Mitchell</option>
                                         </select>
                                     </div>
-
+                                    
                                     <button
                                         className={`bg-maize text-darkblue px-4 py-2 rounded-md mt-4`}
                                         onClick={handleSignup}
-                                        
                                     >
                                         Sign Me Up!
                                     </button>
