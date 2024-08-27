@@ -103,7 +103,7 @@ export default function Navbar() {
                                         <Image
                                             className="h-8 w-8 rounded-full" 
                                             width={32} height={32}
-                                            src={user.picture} 
+                                            src={user.picture ? user.picture : "/logo.jpg"} 
                                             alt="Profile Picture"
                                         />
                                     ) : (

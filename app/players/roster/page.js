@@ -48,7 +48,7 @@ export default function Home() {
                                 <tr key={player.name} className="border-t border-darkblue">
                                     <td className="p-4 flex items-center">
                                         <Image
-                                            src={player.picture}
+                                            src={player.picture ? player.picture : "/logo.jpg"}
                                             alt={player.name}
                                             width={30}
                                             height={30}
