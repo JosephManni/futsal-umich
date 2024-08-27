@@ -83,7 +83,7 @@ export default function PlayerPortal() {
         // Ensure userInfo has default values for preferred_style and preferred_date
         const updatedUserInfo = {
             ...userInfo,
-            preferred_style: userInfo.preferred_style || "Competitive",
+            preferred_style: (!userInfo.preferred_style || userInfo.preferred_style === "None") ? "Competitive" : userInfo.preferred_style,
             preferred_date: userInfo.preferred_date || "Monday, Sept. 2: 7-9pm @ Hubbard",
         };
 
