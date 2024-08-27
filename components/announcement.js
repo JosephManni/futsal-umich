@@ -5,7 +5,7 @@ export default function Announcement() {
     <div className="bg-maize text-darkblue py-2 text-center w-full">
       <p className="text-lg font-bold">
         {/* Tryouts Starting Soon! Check Back For Updates! */}
-        Tryouts are here! <Link href="/players/portal">Sign up now!</Link>
+        Tryouts are here! <Link className="underline" href="/players/portal">Sign up now!</Link>
       </p>
     </div>
   );
