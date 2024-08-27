@@ -112,6 +112,7 @@ export default function Home() {
                                             <option value="SO">SO</option>
                                             <option value="JR">JR</option>
                                             <option value="SR">SR</option>
+                                            <option value="GR">GR</option>
                                         </select>
                                     </td>
                                     <td className="p-4">

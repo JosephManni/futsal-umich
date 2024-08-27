@@ -78,11 +78,11 @@ export default function Home() {
                 <section id="manage-roster" className="p-8 bg-darkblue flex flex-col items-center justify-center w-full h-full -z-50">
                     <div className="w-full mt-8 mb-8">
                         <h1 className="text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 text-center sm:text-left">Tryout Signups</h1>
-                        <div className="text-right mb-4">
+                        {/* <div className="text-right mb-4">
                             <p className='text-white text-lg'>Waiting for assignment: <span className='text-maize'>{waitingCount}</span></p>
                             <p className='text-white text-lg'>Monday, Sept. 2: 7-9pm @ Hubbard: <span className='text-maize'>{mondayCount}</span></p>
                             <p className='text-white text-lg'>Wednesday, Sept. 4: 7-9pm @ Mitchell: <span className='text-maize'>{wednesdayCount}</span></p>
-                        </div>
+                        </div> */}
                     </div>
                     <table className="w-full bg-white p-8 text-darkblue rounded-lg">
                         <thead className="font-bold text-xl text-left p-4">
@@ -91,9 +91,9 @@ export default function Home() {
                                 <th className="p-4">Position</th>
                                 <th className="p-4">Year</th>
                                 <th className="p-4">Preferred Style</th>
-                                <th className="p-4">Preferred Tryout Date</th>
+                                {/* <th className="p-4">Preferred Tryout Date</th> */}
                                 <th className="p-4">Signup Time</th>
-                                <th className="p-4">Assigned Tryout Date</th>
+                                {/* <th className="p-4">Assigned Tryout Date</th> */}
                             </tr>
                         </thead>
                         <tbody className="font-semibold text-md p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
@@ -118,13 +118,13 @@ export default function Home() {
                                     <td className="p-4">
                                         <p>{player.preferred_style}</p>
                                     </td>
-                                    <td className="p-4">
+                                    {/* <td className="p-4">
                                         <p>{player.preferred_date}</p>
-                                    </td>
+                                    </td> */}
                                     <td className="p-4">
                                         <p>{player.signup_time}</p>
                                     </td>
-                                    <td className="p-4">
+                                    {/* <td className="p-4">
                                         <select
                                             value={player.assigned_date}
                                             onChange={(e) => handleUpdatePlayer(player.user_id, 'assigned_date', e.target.value)}
@@ -133,7 +133,7 @@ export default function Home() {
                                             <option value="Monday, Sept. 2: 7-9pm @ Hubbard">Monday, Sept. 2: 7-9pm @ Hubbard</option>
                                             <option value="Wednesday, Sept. 4: 7-9pm @ Mitchell">Wednesday, Sept. 4: 7-9pm @ Mitchell</option>
                                         </select>
-                                    </td>
+                                    </td> */}
                                 </tr>
                             ))}
                         </tbody>
