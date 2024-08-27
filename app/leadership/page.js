@@ -14,6 +14,12 @@ const eboard = [
           '/logo.jpg',
     },
     {
+      name: 'Juno Kim',
+      role: 'Co-Founder / Social Chair',
+      imageUrl:
+        '/logo.jpg',
+    },
+    {
         name: 'Xander Lucas',
         role: 'Competitive Manager',
         imageUrl:
@@ -46,12 +52,6 @@ const eboard = [
     {
         name: 'Joseph Manni',
         role: 'Webmaster',
-        imageUrl:
-          '/logo.jpg',
-    },
-    {
-        name: 'Juno Kim',
-        role: 'Social Chair',
         imageUrl:
           '/logo.jpg',
     },
