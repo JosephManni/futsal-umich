@@ -24,7 +24,7 @@ const createRequestBody = (body) => {
     const requestBody = {};
 
     // Only add user_metadata if it contains non-null values
-    if (body.position || body.year || body.waiver !== undefined || body.preferred_style || body.preferred_date || body.signup_done !== undefined || body.signup_time) {
+    if (body.position || body.year || body.waiver !== undefined || body.preferred_style || body.preferred_date || body.signup_done !== undefined || body.signup_time || body.umid || body.dob) {
         requestBody.user_metadata = {};
         if (body.position) requestBody.user_metadata.position = body.position;
         if (body.year) requestBody.user_metadata.year = body.year;
@@ -34,6 +34,8 @@ const createRequestBody = (body) => {
         if (body.signup_done !== undefined) requestBody.user_metadata.signup_done = body.signup_done;
         if (body.assigned_date) requestBody.user_metadata.assigned_date = body.assigned_date;
         if (body.signup_time) requestBody.user_metadata.signup_time = body.signup_time;
+        if (body.umid) requestBody.user_metadata.umid = body.umid;
+        if (body.dob) requestBody.user_metadata.dob = body.dob;
 
     }
 

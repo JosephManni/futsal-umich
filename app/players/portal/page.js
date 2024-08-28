@@ -34,6 +34,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
 export default function PlayerPortal() {
     const [activeTab, setActiveTab] = useState('profile');
     const [userInfo, setUserInfo] = useState(null);
+    const [tempUMID, setTempUMID] = useState(''); // Temporary state for UMID input
     const [signedName, setSignedName] = useState("");
     const { user, error, isLoading } = useUser();
 
@@ -44,6 +45,7 @@ export default function PlayerPortal() {
                 const response = await fetch('/api/user');
                 const data = await response.json();
                 setUserInfo(data);
+                setTempUMID(data.umid); // Initialize temporary state with fetched data
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
             }
@@ -52,27 +54,40 @@ export default function PlayerPortal() {
         fetchUserInfo();
     }, []);
 
-    const handleUpdateUser = async (field, value) => {
-        try {
-            const response = await fetch(`/api/user/update?id=${user.sub}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ [field]: value }),
-            });
-    
-            if (response.ok) {
-                // Update the local userInfo state with the new value
-                setUserInfo((prev) => ({ ...prev, [field]: value }));
-            } else {
-                console.error('Failed to update user:', await response.json());
+    useEffect(() => {
+        // Debounce UMID update
+        const delayDebounceFn = setTimeout(() => {
+            if (tempUMID !== userInfo?.umid) {
+                handleUpdateUser('umid', tempUMID);
             }
-        } catch (error) {
-            console.error('Failed to update user:', error);
+        }, 300); // 300ms delay
+
+        return () => clearTimeout(delayDebounceFn);
+    }, [tempUMID, userInfo?.umid]);
+
+    const handleUpdateUser = async (field, value) => {
+        if(user){
+            try {
+                const response = await fetch(`/api/user/update?id=${user.sub}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ [field]: value }),
+                });
+
+                if (response.ok) {
+                    // Update the local userInfo state with the new value
+                    setUserInfo((prev) => ({ ...prev, [field]: value }));
+                } else {
+                    console.error('Failed to update user:', await response.json());
+                }
+            } catch (error) {
+                console.error('Failed to update user:', error);
+            }
         }
-    };    
-    
+    };
+
     const handleSignWaiver = () => {
         handleUpdateUser('waiver', true);
     };
@@ -95,6 +110,7 @@ export default function PlayerPortal() {
 
     if (isLoading) return <div className='text-maize'>Loading...</div>;
     if (error) return <div className='text-maize'>{error.message}</div>;
+    
     return (
         <main className="flex flex-col items-center justify-between">
             <section id="content" className="h-full w-full p-4 md:p-20 flex flex-col md:flex-row">
@@ -110,11 +126,16 @@ export default function PlayerPortal() {
                             </div>
                             <div className="mb-4">
                                 <label className="block font-bold mb-2 text-darkblue">Date of Birth</label>
-                                <input type="text" className="w-full p-2 border border-gray-300 rounded-md text-black" value={userInfo.dob} disabled />
+                                <input type="date" className="w-full p-2 border border-gray-300 rounded-md text-black" value={userInfo.dob} onChange={(e) => handleUpdateUser('dob', e.target.value)} />
                             </div>
                             <div className="mb-4">
                                 <label className="block font-bold mb-2 text-darkblue">UMID</label>
-                                <input type="text" className="w-full p-2 border border-gray-300 rounded-md text-black" value={userInfo.umid} disabled />
+                                <input
+                                    type="text"
+                                    className="w-full p-2 border border-gray-300 rounded-md text-black"
+                                    value={tempUMID}
+                                    onChange={(e) => setTempUMID(e.target.value)} // Update temporary state
+                                />
                             </div>
                             <div className="mb-4">
                                 <label className="block font-bold mb-2 text-darkblue">Position</label>
