@@ -44,7 +44,7 @@ export default function Home() {
                     <div className='flex flex-col items-center font-semibold text-2xl mx-auto text-center'>
                         <Link href={"/admin/manage/roster"} className='mb-6'><h1>Manage Roster</h1></Link>
                         <Link href={"/admin/manage/tryouts"} className='mb-6'><h1>Manage Tryouts</h1></Link>
-                        <Link href={"/admin/manage/forms"} className='mb-6'><h1>Contact Form Submissions</h1></Link>
+                        <Link href={"/admin/manage/contacts"} className='mb-6'><h1>Contact Form Submissions</h1></Link>
                     </div>
                 </section>
             ) : (
