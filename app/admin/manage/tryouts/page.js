@@ -78,11 +78,11 @@ export default function Home() {
                 <section id="manage-roster" className="p-8 bg-darkblue flex flex-col items-center justify-center w-full h-full -z-50">
                     <div className="w-full mt-8 mb-8">
                         <h1 className="text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 text-center sm:text-left">Tryout Signups</h1>
-                        {/* <div className="text-right mb-4">
-                            <p className='text-white text-lg'>Waiting for assignment: <span className='text-maize'>{waitingCount}</span></p>
-                            <p className='text-white text-lg'>Monday, Sept. 2: 7-9pm @ Hubbard: <span className='text-maize'>{mondayCount}</span></p>
-                            <p className='text-white text-lg'>Wednesday, Sept. 4: 7-9pm @ Mitchell: <span className='text-maize'>{wednesdayCount}</span></p>
-                        </div> */}
+                        <div className="text-right mb-4">
+                            <p className='text-white text-lg'>Total Signup Count: <span className='text-maize'>{waitingCount + mondayCount + wednesdayCount}</span></p>
+                            {/* <p className='text-white text-lg'>Monday, Sept. 2: 7-9pm @ Hubbard: <span className='text-maize'>{mondayCount}</span></p>
+                            <p className='text-white text-lg'>Wednesday, Sept. 4: 7-9pm @ Mitchell: <span className='text-maize'>{wednesdayCount}</span></p> */}
+                        </div>
                     </div>
                     <table className="w-full bg-white p-8 text-darkblue rounded-lg">
                         <thead className="font-bold text-xl text-left p-4">

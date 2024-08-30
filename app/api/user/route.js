@@ -51,3 +51,5 @@ export const GET =  withApiAuthRequired(async (req) => {
         return NextResponse.json({ error: error.message }, { status: error.response?.status || 500 });
     }
 });
+
+export const fetchCache = 'force-no-store';

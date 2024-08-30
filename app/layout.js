@@ -11,6 +11,8 @@ export const metadata = {
   description: "The official website of the Futsal Club at the University of Michigan.",
 };
 
+export const fetchCache = 'force-no-store';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

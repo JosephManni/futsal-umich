@@ -2,10 +2,18 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { SiCheckmarx } from 'react-icons/si';
+import { FaRegCircleXmark } from "react-icons/fa6";
 
 export default function Home() {
     const [roster, setRoster] = useState([]);
     const [currentUserRole, setCurrentUserRole] = useState('');
+    const [summary, setSummary] = useState({
+        totalActiveAccounts: 0,
+        totalApprovedREC: 0,
+        totalApprovedCOMP: 0,
+        totalSignedUpForTryouts: 0,
+    });
 
     // Fetch the roster and the current user's role
     useEffect(() => {
@@ -14,6 +22,9 @@ export default function Home() {
                 const response = await fetch('/api/admin/roster');
                 const data = await response.json();
                 setRoster(data);
+
+                // Update summary information
+                updateSummary(data);
             } catch (error) {
                 console.error('Failed to fetch roster:', error);
             }
@@ -34,6 +45,21 @@ export default function Home() {
         fetchUserRole();
     }, []);
 
+    // Function to update the summary information
+    const updateSummary = (data) => {
+        const totalActiveAccounts = data.length;
+        const totalApprovedREC = data.filter(player => player.division === 'REC' && player.approved === 'Approved').length;
+        const totalApprovedCOMP = data.filter(player => player.division === 'COMP' && player.approved === 'Approved').length;
+        const totalSignedUpForTryouts = data.filter(player => player.signup_done).length;
+
+        setSummary({
+            totalActiveAccounts,
+            totalApprovedREC,
+            totalApprovedCOMP,
+            totalSignedUpForTryouts,
+        });
+    };
+
     // Function to handle updates to the player
     const handleUpdatePlayer = async (userId, field, value) => {
         try {
@@ -53,6 +79,9 @@ export default function Home() {
                         player.user_id === userId ? { ...player, [field]: value } : player
                     )
                 );
+                updateSummary(prevRoster.map(player =>
+                    player.user_id === userId ? { ...player, [field]: value } : player
+                ));
             } else {
                 console.error('Failed to update player:', await response.json());
             }
@@ -65,18 +94,34 @@ export default function Home() {
         <main className="flex min-h-screen flex-col items-center justify-between mt-12">
             <section id="content" className="h-full w-full p-20">
                 <section id="manage-roster" className="p-8 bg-darkblue flex flex-col items-center justify-center w-full h-full -z-50">
-                    <div className="w-full mt-8 mb-8">
+                    <div className="w-full flex justify-between items-start">
                         <h1 className="text-xl md:text-2xl lg:text-3xl text-maize font-bold uppercase mb-2 mt-2 text-center sm:text-left">Roster</h1>
+                        <div className="text-white text-lg font-semibold flex flex-col items-end">
+                            <div className="mb-2">
+                                <strong>Total Active Accounts:</strong> {summary.totalActiveAccounts}
+                            </div>
+                            <div className="mb-2">
+                                <strong>Total Approved REC:</strong> {summary.totalApprovedREC}
+                            </div>
+                            <div className="mb-2">
+                                <strong>Total Approved COMP:</strong> {summary.totalApprovedCOMP}
+                            </div>
+                            <div className="mb-2">
+                                <strong>Total Signed Up for Tryouts:</strong> {summary.totalSignedUpForTryouts}
+                            </div>
+                        </div>
                     </div>
-                    <table className="w-full bg-white p-8 text-darkblue rounded-lg">
+                    <table className="w-full bg-white p-8 text-darkblue rounded-lg mt-8">
                         <thead className="font-bold text-xl text-left p-4">
                             <tr>
                                 <th className="p-4">Player</th>
+                                <th className="p-4">Waiver</th>
                                 <th className="p-4">Position</th>
                                 <th className="p-4">Year</th>
                                 <th className="p-4">Division</th>
                                 <th className="p-4">Role</th>
                                 <th className="p-4">Roster Status</th>
+                                <th className="p-4">Signed Up for Tryouts</th>
                             </tr>
                         </thead>
                         <tbody className="font-semibold text-md p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
@@ -91,6 +136,9 @@ export default function Home() {
                                             className="rounded-full mr-4"
                                         />
                                         {`${player.name}`}
+                                    </td>
+                                    <td className="p-4">
+                                        {player.waiver ? <SiCheckmarx className='text-green-500 h-8 w8'/> : <FaRegCircleXmark className='text-red-500 h-8 w8'/>}
                                     </td>
                                     <td className="p-4">
                                         <select
@@ -147,6 +195,9 @@ export default function Home() {
                                             <option value="Approved">Approved</option>
                                             <option value="Waiting Approval">Waiting Approval</option>
                                         </select>
+                                    </td>
+                                    <td className="p-4">
+                                        {player.signup_done ? 'Yes' : 'No'}
                                     </td>
                                 </tr>
                             ))}

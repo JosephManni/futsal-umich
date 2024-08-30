@@ -54,26 +54,39 @@ export const GET = withApiAuthRequired(async (req) => {
             return NextResponse.json({ error: 'Forbidden: Admin role required' }, { status: 403 });
         }
 
-        // Fetch all users
-        const response = await fetch(
-            `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users?per_page=100`,
-            {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                },
-            }
-        );
+        // Initialize variables for pagination
+        let page = 0;
+        const perPage = 100;
+        let users = [];
+        let morePages = true;
 
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message);
+        while (morePages) {
+            const response = await fetch(
+                `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users?per_page=${perPage}&page=${page}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache',
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message);
+            }
+
+            const result = await response.json();
+            users = users.concat(result);
+
+            // Check if there are more pages
+            morePages = result.length === perPage;
+            page++;
         }
 
-        const users = await response.json();
-        console.log(accessToken);
-        const result = users.map(user => ({
+        // Process the users list
+        const processedUsers = users.map(user => ({
             name: user.name,
             user_id: user.user_id,
             picture: user.picture,
@@ -90,8 +103,7 @@ export const GET = withApiAuthRequired(async (req) => {
             signup_time: user.user_metadata?.signup_time
         }));
 
-
-        return NextResponse.json(result);
+        return NextResponse.json(processedUsers);
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: error.message }, { status: error.status || 500 });
