@@ -56,7 +56,7 @@ export const GET = withApiAuthRequired(async (req) => {
 
         // Fetch all users
         const response = await fetch(
-            `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users`,
+            `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users?per_page=100`,
             {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
@@ -72,7 +72,7 @@ export const GET = withApiAuthRequired(async (req) => {
         }
 
         const users = await response.json();
-
+        console.log(accessToken);
         const result = users.map(user => ({
             name: user.name,
             user_id: user.user_id,
