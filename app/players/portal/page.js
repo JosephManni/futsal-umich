@@ -218,14 +218,15 @@ export default function PlayerPortal() {
 
                     {activeTab === 'tryouts' && (
                     <div className="w-full">
-                        {!process.env.NEXT_PUBLIC_TRYOUTS_LIVE ? (
+                        {!process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' ? (
                         <>
                             <h2 className="text-sm font-semibold mb-4 text-darkblue">
-                            Session information will be available shortly.
+                            {/* Session information will be available shortly. */}
+                            Tryout have closed. Thank you for your interest!
                             </h2>
-                            <button className="bg-maize text-darkblue px-4 py-2 rounded-md cursor-not-allowed" disabled>
+                            {/* <button className="bg-maize text-darkblue px-4 py-2 rounded-md cursor-not-allowed" disabled>
                             Sign Up
-                            </button>
+                            </button> */}
                         </>
                         ) : (
                         <>
