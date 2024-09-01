@@ -229,7 +229,7 @@ export default function PlayerPortal() {
                             </button> */}
                         </>
                         )}
-                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' && userInfo && (
+                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'FALSE' && userInfo && (
                         <>
                             <div className="flex flex-col items-left">
                                     {!userInfo.waiver && 
