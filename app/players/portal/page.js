@@ -219,6 +219,7 @@ export default function PlayerPortal() {
                     {activeTab === 'tryouts' && (
                     <div className="w-full">
                         {!process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' ? (
+                            console.log(process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE'),
                         <>
                             <h2 className="text-sm font-semibold mb-4 text-darkblue">
                             {/* Session information will be available shortly. */}
