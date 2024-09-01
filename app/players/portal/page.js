@@ -218,7 +218,7 @@ export default function PlayerPortal() {
 
                     {activeTab === 'tryouts' && (
                     <div className="w-full">
-                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'FALSE' ? (
+                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'FALSE' && (
                         <>
                             <h2 className="text-sm font-semibold mb-4 text-darkblue">
                             {/* Session information will be available shortly. */}
@@ -228,7 +228,8 @@ export default function PlayerPortal() {
                             Sign Up
                             </button> */}
                         </>
-                        ) : (
+                        )}
+                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' && userInfo && (
                         <>
                             <div className="flex flex-col items-left">
                                     {!userInfo.waiver && 
