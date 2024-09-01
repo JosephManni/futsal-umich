@@ -218,8 +218,7 @@ export default function PlayerPortal() {
 
                     {activeTab === 'tryouts' && (
                     <div className="w-full">
-                        {!process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' ? (
-                            console.log(process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE'),
+                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'FALSE' ? (
                         <>
                             <h2 className="text-sm font-semibold mb-4 text-darkblue">
                             {/* Session information will be available shortly. */}
@@ -276,8 +275,9 @@ export default function PlayerPortal() {
                                                 </div>
                                         </div>
                                     }
-                                    {userInfo.waiver && !userInfo.signup_done &&
+                                    {userInfo.waiver && !userInfo.signup_done && process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' &&
                                     <div>
+                                        {console.log(process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE')}
                                     <p className='text-darkblue text-md'>{"Tryouts will be held across 3 dates. The first two days are outdoors and the final cuts are indoors."}</p>
                                     
                                     <ul className='text-darkblue text-md mt-6'>
