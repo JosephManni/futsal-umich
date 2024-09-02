@@ -142,9 +142,10 @@ export default function Home() {
                                     </td>
                                     <td className="p-4">
                                         <select
-                                            value={player.position}
+                                            value={['GK', 'D', 'P', 'W'].includes(player.position) ? player.position : 'Incomplete'}
                                             onChange={(e) => handleUpdatePlayer(player.user_id, 'position', e.target.value)}
                                         >
+                                            <option value="Incomplete">Incomplete</option>
                                             <option value="GK">GK</option>
                                             <option value="D">D</option>
                                             <option value="P">P</option>
@@ -153,9 +154,10 @@ export default function Home() {
                                     </td>
                                     <td className="p-4">
                                         <select
-                                            value={player.year}
+                                            value={['FR', 'SO', 'JR', 'SR', 'GR'].includes(player.year) ? player.year : 'Incomplete'}
                                             onChange={(e) => handleUpdatePlayer(player.user_id, 'year', e.target.value)}
                                         >
+                                            <option value="Incomplete">Incomplete</option>
                                             <option value="FR">FR</option>
                                             <option value="SO">SO</option>
                                             <option value="JR">JR</option>
@@ -165,9 +167,10 @@ export default function Home() {
                                     </td>
                                     <td className="p-4">
                                         <select
-                                            value={player.division}
+                                            value={['REC', 'COMP', 'PENDING'].includes(player.division) ? player.division : 'Incomplete'}
                                             onChange={(e) => handleUpdatePlayer(player.user_id, 'division', e.target.value)}
                                         >
+                                            <option value="Incomplete">Incomplete</option>
                                             <option value="REC">REC</option>
                                             <option value="COMP">COMP</option>
                                             <option value="PENDING">PENDING</option>
@@ -176,9 +179,10 @@ export default function Home() {
                                     <td className="p-4">
                                         {currentUserRole === 'webmaster' ? (
                                             <select
-                                                value={player.role}
+                                                value={['webmaster', 'admin', 'player'].includes(player.role) ? player.role : 'Incomplete'}
                                                 onChange={(e) => handleUpdatePlayer(player.user_id, 'role', e.target.value)}
                                             >
+                                                <option value="Incomplete">Incomplete</option>
                                                 <option value="webmaster">Webmaster</option>
                                                 <option value="admin">Admin</option>
                                                 <option value="player">Player</option>
@@ -189,9 +193,10 @@ export default function Home() {
                                     </td>
                                     <td className="p-4">
                                         <select
-                                            value={player.approved}
+                                            value={['Approved', 'Waiting Approval'].includes(player.approved) ? player.approved : 'Incomplete'}
                                             onChange={(e) => handleUpdatePlayer(player.user_id, 'approved', e.target.value)}
                                         >
+                                            <option value="Incomplete">Incomplete</option>
                                             <option value="Approved">Approved</option>
                                             <option value="Waiting Approval">Waiting Approval</option>
                                         </select>
