@@ -36,7 +36,7 @@ export default function ContactForms() {
                         'Cache-Control': 'no-cache',
                         'Pragma': 'no-cache'
                     },
-                    body: JSON.stringify({ TCO: newTCOValue })
+                    body: JSON.stringify({ email, TCO: newTCOValue })
                 }
             );
             const result = await response.json();
@@ -53,6 +53,7 @@ export default function ContactForms() {
             console.error('Error updating TCO:', error);
         }
     };
+    
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between mt-12">
