@@ -10,7 +10,8 @@ export default function ContactForm() {
     interest: [],
     notes: '',
     type: 'contact',
-    time: new Date().toLocaleString()
+    time: new Date().toLocaleString(),
+    TCO: false
   });
 
   const [errors, setErrors] = useState({});
