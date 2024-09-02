@@ -10,7 +10,6 @@ export default function ContactForm() {
     interest: [],
     notes: '',
     type: 'contact',
-    time: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -57,11 +56,10 @@ export default function ContactForm() {
 
     try {
       //set time in formdata
-      const date = new Date();
-      const current_time = date.toLocaleString();
+      const currentTime = new Date().toLocaleString();
       setFormData(prevState => ({
-        ...prevState, // Spread operator to retain existing values
-        time: current_time // Update only the 'time' field
+        ...prevState,
+        time: currentTime
       }));
 
       const response = await fetch('https://q3f13mv0ag.execute-api.us-east-2.amazonaws.com/v1/contact/', {
