@@ -10,6 +10,7 @@ export default function ContactForm() {
     interest: [],
     notes: '',
     type: 'contact',
+    time: new Date().toLocaleString()
   });
 
   const [errors, setErrors] = useState({});
@@ -55,13 +56,6 @@ export default function ContactForm() {
     }
 
     try {
-      //set time in formdata
-      const currentTime = new Date().toLocaleString();
-      setFormData(prevState => ({
-        ...prevState,
-        time: currentTime
-      }));
-
       const response = await fetch('https://q3f13mv0ag.execute-api.us-east-2.amazonaws.com/v1/contact/', {
         method: 'POST',
         headers: {
