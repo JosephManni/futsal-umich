@@ -58,8 +58,12 @@ export default function ContactForm() {
     try {
       //set time in formdata
       const date = new Date();
-      const time = date.toLocaleString();
-      setFormData({ ...formData, time: time });
+      const current_time = date.toLocaleString();
+      setFormData(prevState => ({
+        ...prevState, // Spread operator to retain existing values
+        time: current_time // Update only the 'time' field
+      }));
+
       const response = await fetch('https://q3f13mv0ag.execute-api.us-east-2.amazonaws.com/v1/contact/', {
         method: 'POST',
         headers: {

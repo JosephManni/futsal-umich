@@ -15,6 +15,7 @@ export default function ContactForms() {
                 const contactsData = typeof data.body === 'string' ? JSON.parse(data.body) : data.body;
                 
                 setContacts(contactsData);
+                console.log(contactsData);
             } catch (error) {
                 console.error('Failed to fetch roster:', error);
             }
