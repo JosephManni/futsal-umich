@@ -31,20 +31,20 @@ export default function Navbar() {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [profileMenuRef]);
+    }, []);
 
-    return(
+    return (
         <nav className="bg-darkblue fixed w-full absolute z-500 top-0">
             {/* <Announcement /> */}
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        {/* Mobile menu button*/}
-                        <button 
-                            type="button" 
-                            onClick={toggleMobileMenu} 
-                            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" 
-                            aria-controls="mobile-menu" 
+                        {/* Mobile menu button */}
+                        <button
+                            type="button"
+                            onClick={toggleMobileMenu}
+                            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                            aria-controls="mobile-menu"
                             aria-expanded={isMobileMenuOpen ? "true" : "false"}
                         >
                             <span className="absolute -inset-0.5"></span>
@@ -59,12 +59,12 @@ export default function Navbar() {
                             </svg>
                         </button>
                     </div>
-                    
+
                     <div className={`${isMobileMenuOpen ? 'hidden' : 'flex'} sm:flex-1 items-center justify-center sm:items-stretch sm:justify-start`}>
                         <div className="flex flex-shrink-0 items-center">
-                        <a href="/" className="hidden sm:block">
-                            <Image className="h-12 w-auto mx-auto" width={32} height={32} src="/logo.jpg" alt="Club Futsal at the University of Michigan"/>
-                        </a>
+                            <a href="/" className="hidden sm:block">
+                                <Image className="h-12 w-auto mx-auto" width={32} height={32} src="/logo.jpg" alt="Club Futsal at the University of Michigan" />
+                            </a>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
@@ -87,27 +87,27 @@ export default function Navbar() {
                         </button>
 
                         {/* Profile dropdown */}
-                        <div className="relative ml-3" onBlur={() => setIsProfileMenuOpen(false)} ref={profileMenuRef}>
+                        <div className="relative ml-3" ref={profileMenuRef}>
                             <div>
-                                <button 
-                                    type="button" 
-                                    onClick={toggleProfileMenu} 
-                                    className="relative flex rounded-full bg-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" 
-                                    id="user-menu-button" 
-                                    aria-expanded={isProfileMenuOpen ? "true" : "false"} 
+                                <button
+                                    type="button"
+                                    onClick={toggleProfileMenu}
+                                    className="relative flex rounded-full bg-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    id="user-menu-button"
+                                    aria-expanded={isProfileMenuOpen ? "true" : "false"}
                                     aria-haspopup="true"
                                 >
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
                                     {user ? (
                                         <Image
-                                            className="h-8 w-8 rounded-full" 
+                                            className="h-8 w-8 rounded-full"
                                             width={32} height={32}
-                                            src={user.picture ? user.picture : "/logo.jpg"} 
+                                            src={user.picture ? user.picture : "/logo.jpg"}
                                             alt="Profile Picture"
                                         />
                                     ) : (
-                                        <CgProfile className="h-8 w-8 rounded-full bg-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"/>
+                                        <CgProfile className="h-8 w-8 rounded-full bg-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" />
                                     )}
                                 </button>
                             </div>
@@ -116,7 +116,6 @@ export default function Navbar() {
                             {isProfileMenuOpen && (
                                 <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
                                     <a onClick={() => setIsProfileMenuOpen(false)} href="/players/portal" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">{user ? "My" : "Your"} Profile</a>
-                                    {/* <Link href="/profile/settings" className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Settings</Link> */}
                                     <Link onClick={() => setIsProfileMenuOpen(false)} href={`/api/auth/${user ? "logout" : "login"}`} className="block px-4 py-2 text-lg text-gray-700" role="menuitem" tabIndex="-1">Sign {user ? "out" : "in"}</Link>
                                 </div>
                             )}
@@ -135,7 +134,7 @@ export default function Navbar() {
                     <Link onClick={() => setIsMobileMenuOpen(false)} href="/social" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Socials</Link>
                 </div>
                 <div className="flex justify-center">
-                <Image className="h-8 w-auto" src="/logo.jpg" width={32} height={32} alt="Club Futsal at the University of Michigan"/>
+                    <Image className="h-8 w-auto" src="/logo.jpg" width={32} height={32} alt="Club Futsal at the University of Michigan" />
                 </div>
             </div>
         </nav>
