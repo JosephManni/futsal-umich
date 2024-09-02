@@ -40,6 +40,7 @@ export default function ContactForms() {
                                 <th className="p-4">Form</th>
                                 <th className="p-4">Interest</th>
                                 <th className="p-4">Notes</th>
+                                <th className='p-4'>Date</th>
                             </tr>
                         </thead>
                         <tbody className="font-semibold text-md p-4">
@@ -50,7 +51,8 @@ export default function ContactForms() {
                                     <td className="p-4">{contact.lastName}</td>
                                     <td className="p-4">{contact.type}</td>
                                     <td className="p-4">{contact.interest.join(', ')}</td>
-                                    <td className="p-4">{contact.notes}</td>
+                                    <td className="p-4 text-sm">{contact.notes}</td>
+                                    <td className="p-4">{contact.date}</td>
                                 </tr>
                             ))}
                         </tbody>
