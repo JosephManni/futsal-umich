@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function ContactForms() {
     const [contacts, setContacts] = useState([]);
+    const [accessToken, setAccessToken] = useState(''); // Update this with your logic for getting the access token
 
     useEffect(() => {
         const fetchRoster = async () => {
@@ -15,7 +16,6 @@ export default function ContactForms() {
                 const contactsData = typeof data.body === 'string' ? JSON.parse(data.body) : data.body;
                 
                 setContacts(contactsData);
-                console.log(contactsData);
             } catch (error) {
                 console.error('Failed to fetch roster:', error);
             }
@@ -23,7 +23,36 @@ export default function ContactForms() {
 
         fetchRoster();
     }, []);
-    
+
+    const handleTCOChange = async (email, newTCOValue) => {
+        try {
+            const response = await fetch(
+                `https://q3f13mv0ag.execute-api.us-east-2.amazonaws.com/v1/contact`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    },
+                    body: JSON.stringify({ TCO: newTCOValue })
+                }
+            );
+            const result = await response.json();
+            if (response.ok) {
+                // Update the local state
+                setContacts(contacts.map(contact =>
+                    contact.email === email ? { ...contact, TCO: newTCOValue } : contact
+                ));
+                console.log('TCO updated successfully');
+            } else {
+                console.error('Failed to update TCO:', result);
+            }
+        } catch (error) {
+            console.error('Error updating TCO:', error);
+        }
+    };
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between mt-12">
@@ -42,6 +71,7 @@ export default function ContactForms() {
                                 <th className="p-4">Interest</th>
                                 <th className="p-4">Notes</th>
                                 <th className='p-4'>Date</th>
+                                <th className='p-4'>TCO?</th>
                             </tr>
                         </thead>
                         <tbody className="font-semibold text-md p-4">
@@ -53,7 +83,16 @@ export default function ContactForms() {
                                     <td className="p-4">{contact.type}</td>
                                     <td className="p-4">{contact.interest.join(', ')}</td>
                                     <td className="p-4 text-sm">{contact.notes}</td>
-                                    <td className="p-4">{contact.date}</td>
+                                    <td className="p-4">{contact.time}</td>
+                                    <td className="p-4">
+                                        <select
+                                            value={contact.TCO ? 'Yes' : 'No'}
+                                            onChange={(e) => handleTCOChange(contact.email, e.target.value === 'Yes')}
+                                        >
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
