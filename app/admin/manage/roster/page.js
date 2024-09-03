@@ -90,6 +90,38 @@ export default function Home() {
         }
     };
 
+    // Function to convert roster data to CSV
+    const convertToCSV = (data) => {
+        const header = ["Player Name", "Email", "Waiver", "Position", "Year", "Division", "Role", "Roster Status", "Signed Up for Tryouts"];
+        const rows = data.map(player => [
+            player.name,
+            player.email,
+            player.waiver ? 'Done' : 'Incomplete',
+            player.position,
+            player.year,
+            player.division,
+            player.role,
+            player.approved,
+            player.signup_done ? 'Yes' : 'No'
+        ]);
+
+        const csvContent = [header, ...rows].map(e => e.join(",")).join("\n");
+        return csvContent;
+    };
+
+    // Function to handle exporting to CSV
+    const handleExportToCSV = () => {
+        const csv = convertToCSV(roster);
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'roster.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between mt-12">
             <section id="content" className="h-full w-full p-20">
@@ -109,6 +141,12 @@ export default function Home() {
                             <div className="mb-2">
                                 <strong>Total Signed Up for Tryouts:</strong> {summary.totalSignedUpForTryouts}
                             </div>
+                            <button 
+                                onClick={handleExportToCSV}
+                                className="mt-4 px-4 py-2 bg-yellow-500 text-darkblue rounded hover:bg-yellow-600"
+                            >
+                                Export to CSV
+                            </button>
                         </div>
                     </div>
                     <table className="w-full bg-white p-8 text-darkblue rounded-lg mt-8">
@@ -136,9 +174,11 @@ export default function Home() {
                                             className="rounded-full mr-4"
                                         />
                                         {`${player.name}`}
+                                        <br/>
+                                        {`${player.email}`}
                                     </td>
                                     <td className="p-4">
-                                        {player.waiver ? <SiCheckmarx className='text-green-500 h-8 w8'/> : <FaRegCircleXmark className='text-red-500 h-8 w8'/>}
+                                        {player.waiver ? <SiCheckmarx className='text-green-500 h-8 w-8'/> : <FaRegCircleXmark className='text-red-500 h-8 w-8'/>}
                                     </td>
                                     <td className="p-4">
                                         <select

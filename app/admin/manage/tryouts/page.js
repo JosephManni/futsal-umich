@@ -94,7 +94,7 @@ export default function Home() {
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.setAttribute('href', url);
-        link.setAttribute('download', 'roster.csv');
+        link.setAttribute('download', 'tryouts.csv');
         link.click();
     };
 

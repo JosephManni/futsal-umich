@@ -88,6 +88,7 @@ export const GET = withApiAuthRequired(async (req) => {
         // Process the users list
         const processedUsers = users.map(user => ({
             name: user.name,
+            email: user.email,
             user_id: user.user_id,
             picture: user.picture,
             position: user.user_metadata?.position,
