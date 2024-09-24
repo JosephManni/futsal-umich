@@ -19,40 +19,40 @@ const getManagementAPIToken = async () => {
     return data.access_token;
 };
 
-export const GET = withApiAuthRequired(async (req) => {
+export const GET = (async (req) => {
     try {
         // Get the user's session
         const res = new NextResponse();
-        const session = await getSession(req, res);
+        // const session = await getSession(req, res);
 
-        if (!session || !session.user.sub) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        // if (!session || !session.user.sub) {
+        //     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        // }
 
-        const userId = session.user.sub; // Auth0 user ID
+        // const userId = session.user.sub; // Auth0 user ID
         const accessToken = await getManagementAPIToken();
 
         // Fetch the current user's profile to check their role
-        const userResponse = await fetch(
-            `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users/${userId}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        );
+        // const userResponse = await fetch(
+        //     `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users/${userId}`,
+        //     {
+        //         headers: {
+        //             Authorization: `Bearer ${accessToken}`,
+        //         },
+        //     }
+        // );
 
-        if (!userResponse.ok) {
-            const error = await userResponse.json();
-            throw new Error(error.message);
-        }
+        // if (!userResponse.ok) {
+        //     const error = await userResponse.json();
+        //     throw new Error(error.message);
+        // }
 
-        const userProfile = await userResponse.json();
-        const userRole = userProfile.app_metadata?.role;
+        // const userProfile = await userResponse.json();
+        // const userRole = userProfile.app_metadata?.role;
 
-        if (userRole !== 'admin' && userRole !== 'webmaster') {
-            return NextResponse.json({ error: 'Forbidden: Admin role required' }, { status: 403 });
-        }
+        // if (userRole !== 'admin' && userRole !== 'webmaster') {
+        //     return NextResponse.json({ error: 'Forbidden: Admin role required' }, { status: 403 });
+        // }
 
         // Initialize variables for pagination
         let page = 0;
