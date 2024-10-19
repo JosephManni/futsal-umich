@@ -2,10 +2,12 @@ import Link from "next/link";
 import { CiFacebook, CiInstagram } from "react-icons/ci";
 import { SiGroupme } from "react-icons/si";
 import Image from "next/image";
+import Sponsors from "./sponsors";
 
 export default function Footer() {
     return (
         <footer className="bg-darkblue">
+            <Sponsors/>
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">

@@ -119,7 +119,6 @@ export default function Home() {
           </section> 
 
           <ContactForm/>
-          <Sponsors/>
         </section>
       </main>
   );
