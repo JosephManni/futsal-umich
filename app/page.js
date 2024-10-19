@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ContactForm from "@/components/contact-form";
+import Sponsors from "@/components/sponsors";
 import Link from "next/link";
 
 export default function Home() {
@@ -118,7 +119,7 @@ export default function Home() {
           </section> 
 
           <ContactForm/>
-
+          <Sponsors/>
         </section>
       </main>
   );
