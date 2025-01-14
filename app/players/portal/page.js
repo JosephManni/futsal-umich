@@ -99,7 +99,7 @@ export default function PlayerPortal() {
         const updatedUserInfo = {
             ...userInfo,
             preferred_style: (!userInfo.preferred_style || userInfo.preferred_style === "None") ? "Competitive" : userInfo.preferred_style,
-            preferred_date: userInfo.preferred_date || "Monday, Sept. 2: 7-9pm @ Hubbard",
+            preferred_date: "win25",
         };
 
         handleUpdateUser('signup_done', true);
@@ -243,16 +243,25 @@ export default function PlayerPortal() {
                                             <div className='flex flex-col items-center'>
                                             <SiCheckmarx className="text-6xl text-green-500 mb-8" />
                                             </div>
-                                            <p className='text-darkblue text-md'>{"Tryouts will be held across 3 dates. The first two days are outdoors and the final cuts are indoors."}</p>
+                                            {/* <p className='text-darkblue text-md'>{"Tryouts will be held across 3 dates. The first two days are outdoors and the final cuts are indoors."}</p>
                                             <ul className='text-darkblue text-md mt-6'>
                                                 <li className='font-bold'>Dates:</li>
                                                 <li>{"*1st day (outdoor) Monday, September 2: 7-9 PM @HUBBARD"}</li>
                                                 <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li>
                                                 <li>{"**Final Cuts (indoor) Friday, September 6: 5-7 PM @COLISEUM"}</li>
+                                            </ul> */}
+                                            <p className='text-darkblue text-md'>{"Tryouts will be held across (2) day(s). Depending on the amount of signups, there may be an additional session for final cuts."}</p>
+                                    
+                                            <ul className='text-darkblue text-md mt-6'>
+                                                <li className='font-bold'>Dates:</li>
+                                                <li>{"Tuesday, January 21: 6-9 PM (Tentative) @COLISEUM"}</li>
+                                                <li>{"Friday, January 24: 9-11 PM @COLISEUM"}</li>
+                                                {/* <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li> */}
+                                                <li>{"**Final Cuts - TBA"}</li>
                                             </ul>
                                             <p className='text-darkblue text-md mt-6'>Tryouts are <span className='italic'>free</span> and everyone who registers will be given a chance to tryout</p>
                                             {/* <p className='text-darkblue text-md mt-2'>However, your preference <span className='italic font-semibold'>does not guarantee</span> you that time slot (first come first serve)</p> */}
-                                            <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work it through"}</p>                                                                  
+                                            <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work through it"}</p>                                                                  
                                             <p className='text-darkblue text-md mt-2'>{"Arrive 10-15 minutes early to warmup & get organized"}</p>
 
                                          <div className="flex flex-col items-start mt-6">
@@ -279,17 +288,26 @@ export default function PlayerPortal() {
                                     {userInfo.waiver && !userInfo.signup_done && process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE' &&
                                     <div>
                                         {console.log(process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'TRUE')}
-                                    <p className='text-darkblue text-md'>{"Tryouts will be held across 3 dates. The first two days are outdoors and the final cuts are indoors."}</p>
+                                    {/* <p className='text-darkblue text-md'>{"Tryouts will be held across 3 dates. The first two days are outdoors and the final cuts are indoors."}</p>
                                     
                                     <ul className='text-darkblue text-md mt-6'>
                                         <li className='font-bold'>Dates:</li>
                                         <li>{"*1st day (outdoor) Monday, September 2: 7-9 PM @HUBBARD"}</li>
                                         <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li>
                                         <li>{"**Final Cuts (indoor) Friday, September 6: 5-7 PM @COLISEUM"}</li>
+                                    </ul> */}
+                                    <p className='text-darkblue text-md'>{"Tryouts will be held across (2) day(s). Depending on the amount of signups, there may be an additional session for final cuts."}</p>
+                                    
+                                    <ul className='text-darkblue text-md mt-6'>
+                                        <li className='font-bold'>Dates:</li>
+                                        <li>{"Tuesday, January 21: 6-9 PM (Tentative) @COLISEUM"}</li>
+                                        <li>{"Friday, January 24: 9-11 PM @COLISEUM"}</li>
+                                        {/* <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li> */}
+                                        <li>{"**Final Cuts - TBA"}</li>
                                     </ul>
                                     <p className='text-darkblue text-md mt-6'>Tryouts are <span className='italic'>free</span> and everyone who registers will be given a chance to tryout</p>
                                     {/* <p className='text-darkblue text-md mt-2'>However, your preference <span className='italic font-semibold'>does not guarantee</span> you that time slot (first come first serve)</p> */}
-                                    <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work it through"}</p>                                                                  
+                                    <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work through it."}</p>                                                                  
                                     <p className='text-darkblue text-md mt-2'>{"Arrive 10-15 minutes early to warmup & get organized"}</p>
 
                                     <div className="mb-4 mt-6">
