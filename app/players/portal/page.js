@@ -221,15 +221,15 @@ export default function PlayerPortal() {
                         {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'FALSE' && !userInfo.signup_done && (
                         <>
                             <h2 className="text-sm font-semibold mb-4 text-darkblue">
-                            {/* Session information will be available shortly. */}
-                            Tryout have closed. Thank you for your interest!
+                            Session information will be available shortly. Please check back soon!
+                            {/* Tryout have closed. Thank you for your interest! */}
                             </h2>
                             {/* <button className="bg-maize text-darkblue px-4 py-2 rounded-md cursor-not-allowed" disabled>
                             Sign Up
                             </button> */}
                         </>
                         )}
-                        {process.env.NEXT_PUBLIC_TRYOUTS_LIVE === 'FALSE' && userInfo && (
+                        {userInfo && (
                         <>
                             <div className="flex flex-col items-left">
                                     {!userInfo.waiver && 
