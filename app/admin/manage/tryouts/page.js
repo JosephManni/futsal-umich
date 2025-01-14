@@ -12,7 +12,7 @@ export default function Home() {
             try {
                 const response = await fetch('/api/admin/roster');
                 const data = await response.json();
-                const filteredRoster = data.filter(person => person.signup_done === true);
+                const filteredRoster = data.filter(person => (person.signup_done === true && person.preferred_date === 'win25'));
     
                 // Sort the roster by signup_time (earliest first)
                 const sortedRoster = filteredRoster.sort((a, b) => new Date(a.signup_time) - new Date(b.signup_time));
@@ -36,31 +36,6 @@ export default function Home() {
         fetchUserRole();
     }, []);
 
-    const handleUpdatePlayer = async (userId, field, value) => {
-        try {
-            const body = field === 'approved' ? { [field]: value === 'Approved' } : { [field]: value };
-            const response = await fetch(`/api/admin/roster/updatePlayer?id=${userId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            });
-
-            if (response.ok) {
-                const updatedPlayer = await response.json();
-                setRoster(prevRoster =>
-                    prevRoster.map(player =>
-                        player.user_id === userId ? { ...player, [field]: value } : player
-                    )
-                );
-            } else {
-                console.error('Failed to update player:', await response.json());
-            }
-        } catch (error) {
-            console.error('Failed to update player:', error);
-        }
-    };
 
     const getCountByDate = (date) => {
         return roster.filter(player => player.assigned_date === date).length;
