@@ -322,7 +322,7 @@ export default function PlayerPortal() {
                                             <option value="No Preference">No Preference</option>
                                         </select>
                                     </div>
-                                    <p className='text-darkblue text-md mt-2'>{"Please fill out "}<a className='text-maize text-md mt-2' href='https://docs.google.com/forms/d/152a39hda_JwTLWnt-nMuBpZaeOyuISGOk5om-up5sIE/edit?ts=6786d398'>this form</a>to participate</p>
+                                    <p className='text-darkblue text-md mt-2'>{"Please fill out "}<a className='text-maize text-md mt-2' href='https://docs.google.com/forms/d/152a39hda_JwTLWnt-nMuBpZaeOyuISGOk5om-up5sIE/edit?ts=6786d398'>this form</a> to participate</p>
                                     {/* <div className="mb-4">
                                         <label className="block font-bold mb-2 text-darkblue">Preferred Session</label>
                                         <select
