@@ -250,15 +250,15 @@ export default function PlayerPortal() {
                                                 <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li>
                                                 <li>{"**Final Cuts (indoor) Friday, September 6: 5-7 PM @COLISEUM"}</li>
                                             </ul> */}
-                                            <p className='text-darkblue text-md'>{"Tryouts will be held across (2) day(s). Depending on the amount of signups, there may be an additional session for final cuts."}</p>
+                                    <p className='text-darkblue text-md'>{"Tryouts will be held across (2) day(s). You must sign up for a time slot with the form linked below."}</p>
                                     
-                                            <ul className='text-darkblue text-md mt-6'>
-                                                <li className='font-bold'>Dates:</li>
-                                                <li>{"Tuesday, January 21: 6-9 PM (Tentative) @COLISEUM"}</li>
-                                                <li>{"Friday, January 24: 9-11 PM @COLISEUM"}</li>
-                                                {/* <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li> */}
-                                                <li>{"**Final Cuts - TBA"}</li>
-                                            </ul>
+                                    <ul className='text-darkblue text-md mt-6'>
+                                        <li className='font-bold'>Dates:</li>
+                                        <li>{"First Round: Tuesday, January 21: 6-9 PM @Bethlehem United Church of Christ"}</li>
+                                        <li className='ml-2'>{"Slot A: 6-7pm, B:7-8pm, C:8-9pm"}</li>
+                                        <li>{"Final Cuts: Friday, January 24: 9-11 PM @COLISEUM"}</li>
+
+                                    </ul>
                                             <p className='text-darkblue text-md mt-6'>Tryouts are <span className='italic'>free</span> and everyone who registers will be given a chance to tryout</p>
                                             {/* <p className='text-darkblue text-md mt-2'>However, your preference <span className='italic font-semibold'>does not guarantee</span> you that time slot (first come first serve)</p> */}
                                             <p className='text-darkblue text-md mt-2'>{"If you have a time conflict, please let us know in additional comments & we will try to work through it"}</p>                                                                  
@@ -296,14 +296,14 @@ export default function PlayerPortal() {
                                         <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li>
                                         <li>{"**Final Cuts (indoor) Friday, September 6: 5-7 PM @COLISEUM"}</li>
                                     </ul> */}
-                                    <p className='text-darkblue text-md'>{"Tryouts will be held across (2) day(s). Depending on the amount of signups, there may be an additional session for final cuts."}</p>
+                                    <p className='text-darkblue text-md'>{"Tryouts will be held across (2) day(s). You must sign up for a time slot with the form linked below."}</p>
                                     
                                     <ul className='text-darkblue text-md mt-6'>
                                         <li className='font-bold'>Dates:</li>
-                                        <li>{"Tuesday, January 21: 6-9 PM (Tentative) @COLISEUM"}</li>
-                                        <li>{"Friday, January 24: 9-11 PM @COLISEUM"}</li>
-                                        {/* <li>{"*2nd day (outdoor) Wednesday, September 4: 7-9 PM @MITCHELL"}</li> */}
-                                        <li>{"**Final Cuts - TBA"}</li>
+                                        <li>{"First Round: Tuesday, January 21: 6-9 PM @Bethlehem United Church of Christ"}</li>
+                                        <li className='ml-2'>{"Slot A: 6-7pm, B:7-8pm, C:8-9pm"}</li>
+                                        <li>{"Final Cuts: Friday, January 24: 9-11 PM @COLISEUM"}</li>
+
                                     </ul>
                                     <p className='text-darkblue text-md mt-6'>Tryouts are <span className='italic'>free</span> and everyone who registers will be given a chance to tryout</p>
                                     {/* <p className='text-darkblue text-md mt-2'>However, your preference <span className='italic font-semibold'>does not guarantee</span> you that time slot (first come first serve)</p> */}
