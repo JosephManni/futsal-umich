@@ -259,7 +259,7 @@ export default function PlayerPortal() {
                                         <li>{"Final Cuts: Friday, January 24: 9-11 PM @COLISEUM"}</li>
 
                                     </ul>
-                                    <p className='text-darkblue text-md mt-2'>{"Please fill out "}<a className='text-maize text-md mt-2'  target='_blank' href='https://docs.google.com/forms/d/152a39hda_JwTLWnt-nMuBpZaeOyuISGOk5om-up5sIE/edit?ts=6786d398'>this form</a> to participate</p>
+                                    <p className='text-darkblue text-md mt-2'>{"Please fill out "}<a className='text-maize text-md mt-2'  target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScnJvHeke76k2hsRDzQnVj8QrXgH6dnWZLMQ0B0dVuJ374vtA/viewform?usp=sharing'>this form</a> to participate</p>
                                     
                                             <p className='text-darkblue text-md mt-6'>Tryouts are <span className='italic'>free</span> and everyone who registers will be given a chance to tryout</p>
                                             {/* <p className='text-darkblue text-md mt-2'>However, your preference <span className='italic font-semibold'>does not guarantee</span> you that time slot (first come first serve)</p> */}
@@ -324,7 +324,7 @@ export default function PlayerPortal() {
                                             <option value="No Preference">No Preference</option>
                                         </select>
                                     </div>
-                                    <p className='text-darkblue text-md mt-2'>{"Please fill out "}<a className='text-maize text-md mt-2'  target='_blank' href='https://docs.google.com/forms/d/152a39hda_JwTLWnt-nMuBpZaeOyuISGOk5om-up5sIE/edit?ts=6786d398'>this form</a> to participate</p>
+                                    <p className='text-darkblue text-md mt-2'>{"Please fill out "}<a className='text-maize text-md mt-2'  target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScnJvHeke76k2hsRDzQnVj8QrXgH6dnWZLMQ0B0dVuJ374vtA/viewform?usp=sharing'>this form</a> to participate</p>
                                     {/* <div className="mb-4">
                                         <label className="block font-bold mb-2 text-darkblue">Preferred Session</label>
                                         <select
